@@ -7,5 +7,3 @@ Tab and Return confirm the highlighted candidate text, and space commits the raw
 
 If you would like to type directly, you can use `apl_keyboard.schema.yaml` (requires `apl_symbols.yaml`). Ctrl (default APL key) changes the mode (APL or ascii). 
 The APL key works like the Caps Lock instead of the shift. This layout lacks the numpad box drawing characters.
-
-`customv.yaml` is a color scheme made by me. It is similar to the color scheme of Dyalog.
