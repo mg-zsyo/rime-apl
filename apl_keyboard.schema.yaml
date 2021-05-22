@@ -1,0 +1,38 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: apl_keyboard
+  name: APL keyboard
+  version: "0.1.0"
+  author:
+    - zmg <moonpostman3@gmail.com>
+  description: |
+    APL/en-US keyboard
+    https://dfns.dyalog.com/n_keyboards.htm
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ ⍋, A ]
+
+engine:
+  processors:
+    - ascii_composer
+    - punctuator
+  segmentors:
+    - punct_segmentor
+  translators:
+    - punct_translator
+
+punctuator:
+  import_preset: apl_symbols
+
+ascii_composer:
+  good_old_caps_lock: true
+  switch_key:
+    Shift_L: noop
+    Shift_R: noop
+    Control_L: inline_ascii
+    Control_R: commit_text
+    Caps_Lock: clear

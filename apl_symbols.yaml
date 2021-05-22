@@ -1,0 +1,89 @@
+# Rime's punctuation and symbols
+# encoding: utf-8
+#
+# APL symbols keyboard
+#
+# https://en.wikipedia.org/wiki/APL_syntax_and_symbols
+# https://dfns.dyalog.com/n_keyboards.htm
+#
+
+punctuator:
+  half_shape: &symtable
+    '~' : { commit: ⌺ }
+    '`' : { commit: ⋄ }
+    '!' : { commit: ⌶ }
+    '@' : { commit: ⍫ }
+    '#' : { commit: ⍒ }
+    '$' : { commit: ⍋ }
+    '%' : { commit: ⌽ }
+    '^' : { commit: ⍉ }
+    '&' : { commit: ⊖ }
+    '*' : { commit: ⍟ }
+    '(' : { commit: ⍱ }
+    ')' : { commit: ⍲ }
+    '1' : { commit: ¨ }
+    '2' : { commit: ¯ }
+    '3' : { commit: '<' }
+    '4' : { commit: ≤ }
+    '5' : { commit: '=' }
+    '6' : { commit: ≥ }
+    '7' : { commit: '>' }
+    '8' : { commit: ≠ }
+    '9' : { commit: ∨ }
+    '0' : { commit: ∧ }
+    '_' : { commit: '!' }
+    '-' : { commit: × }
+    '+' : { commit: ⌹ }
+    '=' : { commit: ÷ }
+    'E' : { commit: ⍷ }
+    'T' : { commit: ⍨ }
+    'I' : { commit: ⍸ }
+    'O' : { commit: ⍥ }
+    'P' : { commit: ⍣ }
+    '{' : { commit: ⍞ }
+    '}' : { commit: ⍬ }
+    '|' : { commit: ⊣ } 
+    'q' : { commit: '?' }
+    'w' : { commit: ⍵ }
+    'e' : { commit: ∊ }
+    'r' : { commit: ⍴ }
+    't' : { commit: '~' }
+    'y' : { commit: ↑ }
+    'u' : { commit: ↓ }
+    'i' : { commit: ⍳ }
+    'o' : { commit: ○ }
+    'p' : { commit: '*' }
+    '[' : { commit: ← }
+    ']' : { commit: → }
+    '\' : { commit: ⊢ }
+    'J' : { commit: ⍤ }
+    'K' : { commit: ⌸ }
+    'L' : { commit: ⌷ }
+    ':' : { commit: ≡ }
+    '"' : { commit: ≢ }
+    'a' : { commit: ⍺ }
+    's' : { commit: ⌈ }
+    'd' : { commit: ⌊ }
+    'f' : { commit: '_' }
+    'g' : { commit: ∇ }
+    'h' : { commit: ∆ }
+    'j' : { commit: ∘ }
+    'k' : { commit: "'" }
+    'l' : { commit: ⎕ }
+    ';' : { commit: ⍎ }
+    "'" : { commit: ⍕ }
+    'Z' : { commit: ⊆ }
+    '<' : { commit: ⍪ }
+    '>' : { commit: ⍙ }
+    '?' : { commit: ⍠ }
+    'z' : { commit: ⊂ }
+    'x' : { commit: ⊃ }
+    'c' : { commit: ∩ }
+    'v' : { commit: ∪ }
+    'b' : { commit: ⊥ }
+    'n' : { commit: ⊤ }
+    'm' : { commit: '|' }
+    ',' : { commit: ⍝ }
+    '.' : { commit: ⍀ }
+    '/' : { commit: ⌿ }
+  full_shape: *symtable
