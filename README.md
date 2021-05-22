@@ -1,5 +1,5 @@
 # rime-apl
-A RIME (weasel) schema for APL
+A RIME (weasel) schema for APL.
 
 `apl.schema.yaml` lets you input APL symbols by their names or shapes. You can open file `apl.dict.yaml` to see the scripts to each symbol. 
 Tab and Return confirm the highlighted candidate text, and space commits the raw input. Ctrl changes the mode (APL or ascii).
