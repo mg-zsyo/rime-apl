@@ -43,7 +43,7 @@ sort: original
 ⍸	i_
 ⍥	o:
 ⍣	*:
-⍞	[,
+⍞	[q
 ⍬	o~
 ⊣	-|
 ⍵	ww
@@ -156,7 +156,7 @@ sort: original
 ⍣	star-diaeresis
 ⍣	power
 ⍣	repeat
-⍞	quad-quote
+⍞	quote-quad
 ⍞	char-input
 ⍞	char-output
 ⍬	zilde
