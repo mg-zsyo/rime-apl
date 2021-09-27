@@ -8,7 +8,7 @@
 #
 
 punctuator:
-  half_shape: &symtable
+  half_shape: 
     '~' : { commit: ⌺ }
     '`' : { commit: ⋄ }
     '!' : { commit: ⌶ }
@@ -86,4 +86,5 @@ punctuator:
     ',' : { commit: ⍝ }
     '.' : { commit: ⍀ }
     '/' : { commit: ⌿ }
-  full_shape: *symtable
+  full_shape: 
+    __include: punctuator/half_shape
