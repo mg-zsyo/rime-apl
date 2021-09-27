@@ -351,4 +351,4 @@ sort: original
 ¯11∘○	j-times
 ¯12∘○	exp-j-times
 ¯12∘○	cos-jsin
-{⍺×¯12○⍵}	phasor
+(⊣×¯12○⊢)	phasor
