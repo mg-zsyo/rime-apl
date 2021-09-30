@@ -44,7 +44,6 @@ translator:
   prism: apl_abc
   enable_user_dict: false
   spelling_hints: 2
-  enable_completion: true
   preedit_format: {}
   comment_format:
     - xform/^(.*)/  $1/
