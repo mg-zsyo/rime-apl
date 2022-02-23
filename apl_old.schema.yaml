@@ -2,12 +2,13 @@
 # encoding: utf-8
 
 schema:
-  schema_id: apl
-  name: APL
+  schema_id: apl_old
+  name: APL OLD
   version: "0.1.0"
   author:
     - zmg <moonpostman3@gmail.com>
   description: |
+    My first attempt at
     APL symbols input method
     requires font "APL385 Unicode" (available at 
     https://www.dyalog.com/apl-font-keyboard.htm)
@@ -40,8 +41,8 @@ speller:
   delimiter:  ' '
 
 translator:
-  dictionary: apl
-  prism: apl_abc
+  dictionary: apl_old
+  prism: apl_old_abc
   enable_user_dict: false
   spelling_hints: 2
   preedit_format: {}
