@@ -13,5 +13,5 @@ Tab and Return confirm the highlighted candidate text. Number keys confirm the c
 
 If you want to type directly, you can use `apl_keyboard.schema.yaml` (requires `apl_symbols.yaml`). 
 
-Shift (you can change it to shift in the schema) changes the mode (APL or ascii). 
+Shift (customizable in the schema) changes the mode (APL or ascii). 
 It works like the Caps Lock. This layout lacks the numpad box drawing characters.
