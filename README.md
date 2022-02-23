@@ -1,10 +1,10 @@
 # rime-apl
 
-RIME (weasel) schemata for APL (primarily Dyalog)
+[Rime](https://rime.im/) (weasel) schemata for APL (primarily Dyalog)
 
 `apl.schema.yaml` lets you input APL symbols by their names. You can open file `apl.dict.yaml` to see and edit the scripts to each symbol. 
 
-To use the schema, you need to put `apl.schema.yaml`, `alpahbet.dict.yaml`, `apl_boot.schema.yaml` and `apl.dict.yaml` in your user folder, and select both `APL` and `APL Boot` in RIME setting.
+To use the schema, you need to put `apl.schema.yaml`, `alpahbet.dict.yaml`, `apl_boot.schema.yaml` and `apl.dict.yaml` in your user folder, and select both `APL` and `APL Boot` in Rime setting.
 
 When using the `APL` schema:
 - you can type the letters normally. (This is a hack using `alpahbet.dict.yaml`. The output is NOT real direct keyboard output.)
