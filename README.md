@@ -1,6 +1,6 @@
 # rime-apl
 
-[Rime](https://rime.im/) (weasel) schema for APL (primarily Dyalog)
+[Rime](https://rime.im/) (weasel) schemata for APL (primarily Dyalog)
 
 `apl.schema.yaml` lets you input APL glyphs by their names. You can open file `apl.dict.yaml` to see and edit the names to each glyph. 
 
