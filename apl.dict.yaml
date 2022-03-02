@@ -2,6 +2,11 @@
 # encoding: utf-8
 # Table author:
 #  - zmg <moonpostman3@gmail.com>
+# References:
+#  - https://aplcart.info/
+#  - https://aplwiki.com/
+#  - https://help.dyalog.com/18.0/
+#
 
 ---
 name: apl
@@ -146,6 +151,7 @@ sort: original
 ⍠	quad-colon
 ⊂	shoe-left
 ⊂	enclose
+⊂	partitioned-enclose
 ⊃	shoe-right
 ⊃	first
 ⊃	pick
@@ -339,7 +345,7 @@ sort: original
 (⊢×0<⊢)	map-negative-to-zero
 (¯1*~)	map-bool-to-sign
 ⍸@⊢	map-true-to-iota
-((1-⎕IO)+⍸)@⊢1	map-true-to-enum
+((1-⎕IO)+⍸)@⊢	map-true-to-enum
 (∘.!⍨0,⍳)	binomial-coefficients-until
 (⍉(∘.!⍨0,⍳))	pascals-triangle
 ⍉∘⌽	rotate-ninety-degrees-ccw
@@ -351,3 +357,7 @@ sort: original
 {(⊃⍋)¨↓[⍺]⍵}	argmin
 {(⊃⍒)¨↓[⍺]⍵}	argmax
 +∘÷/	continued-fraction
+(0=⎕NC)	is-undefined-variable
+(⍳⍨=⍳∘≢)	unique-mask
+{(-⍺)↑¨(+\⍺)↑¨⊂⍵}	partition-by-length
+((⍸⍣¯1⊣)⊂⊢)	cut
