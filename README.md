@@ -12,4 +12,4 @@ When using the `APL` schema:
 Tab and Return confirm the highlighted candidate text. Number keys confirm the candidate text labeled that number. Space commits the raw input.
 
 Shift (customizable in the schema) changes the mode (APL or ascii). 
-It works like the Caps Lock. This layout lacks the numpad box drawing characters.
+It works like the Caps Lock.
