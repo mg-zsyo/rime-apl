@@ -18,6 +18,7 @@ sort: original
 ⌺	stencil
 ⋄	diamond
 ⋄	separator
+⋄	<>
 ⍒	grade-down
 ⍋	grade-up
 ⌽	reverse
@@ -106,7 +107,7 @@ sort: original
 *	power
 ←	arrow-left
 ←	assign
-←	is
+←	<-
 →	arrow-right
 →	goto
 ⊢	tack-right
@@ -226,6 +227,8 @@ sort: original
 ⎕DT	date-time
 ⎕CLEAR	clear
 )ERASE	erase
+)si	list-si
+)sic	clear-si
 ]help	help
 ]display	display
   (f g h) ⍵ ⍝↔ (  f ⍵) g (  h ⍵)	fork
@@ -244,7 +247,7 @@ sort: original
 +/	sum
 +\	sums
 +\	cumsum
-((+\(⊣-1⍨)↑⊢),+/)	msum
+((+\(¯1+⊣)↑⊢),+/)	msum
 ⌈/	max-of
 ⌊/	min-of
 ⊢/	last
@@ -361,3 +364,12 @@ sort: original
 (⍳⍨=⍳∘≢)	unique-mask
 {(-⍺)↑¨(+\⍺)↑¨⊂⍵}	partition-by-length
 ((⍸⍣¯1⊣)⊂⊢)	cut
+(+\÷(((1-⎕IO)+⍳)≢))	avgs
+(((+\÷(((1-⎕IO)+⍳)≢))((¯1+⊣)↑⊢)),(+/÷⊣))	mavg
+(+/÷⊣)	mavg-simple
+(+.×÷1⊥⊣)	wavg
+(⊃≠⊢⍤/>-<)	compare-ordered
+(⊃≠⊢⍤/-)	first-difference
+(>-<)	compare
+⊢⍤/	filter
+)ed ○	edit-class-script
