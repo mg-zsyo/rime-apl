@@ -38,14 +38,18 @@ sort: original
 ¯	high-minus
 <	less-than
 ≤	less-or-equal
+≤	up-to
 =	equal
 ≥	greater-or-equal
+≥	at-least
 >	greater-than
 ≠	not-equal
 ∨	or
 ∨	gcd
+∨	greatest-common-divisor
 ∧	and
 ∧	lcm
+∧	lowest-common-multiple
 !	factorial
 !	binomial
 !	out-of
@@ -53,12 +57,14 @@ sort: original
 ×	times
 ×	multiply
 ×	signum
+×	xx
 ⌹	inverse
 ⌹	solve
 ⌹	matrix-divide
 ⌹	domino
-÷	divide
+÷	divided-by
 ÷	reciprocal
+÷	dd
 ⍷	find
 ⍨	commute
 ⍨	constant
@@ -85,6 +91,7 @@ sort: original
 ∊	epsilon
 ∊	enlist
 ∊	member
+∊	ee
 ⍴	rho
 ⍴	rr
 ⍴	shape
@@ -108,6 +115,8 @@ sort: original
 ←	arrow-left
 ←	assign
 ←	<-
+←	tis
+←	tt
 →	arrow-right
 →	goto
 ⊢	tack-right
@@ -225,12 +234,15 @@ sort: original
 ⎕S	search
 ⎕TS	timestamp
 ⎕DT	date-time
+⎕CY	copy-workspace
+{(⍎⍵⎕NS⍬).⎕CY ⍵}	copy-workspace-to-namespace
 ⎕CLEAR	clear
 )ERASE	erase
 )si	list-si
 )sic	clear-si
 ]help	help
-]display	display
+]disp	display-mid
+]display	display-max
   (f g h) ⍵ ⍝↔ (  f ⍵) g (  h ⍵)	fork
 ⍺ (f g h) ⍵ ⍝↔ (⍺ f ⍵) g (⍺ h ⍵)	fork
   (A g h) ⍵ ⍝↔       A g (  h ⍵)	fork
@@ -239,6 +251,9 @@ sort: original
 ⍺ (g h) ⍵ ⍝↔ g (⍺ h ⍵)	atop
   f∘g⍨⍵ ⍝↔ ⍵ f g ⍵	hook
 ⍺ f∘g ⍵ ⍝↔ ⍺ f g ⍵	hook
+-⍨	subtracted-from
+÷⍨	long-division
+×⍨	square
 ∨/	any
 ∧/	all
 ×/	prd
@@ -251,9 +266,15 @@ sort: original
 ⌈/	max-of
 ⌊/	min-of
 ⊢/	last
+⊢/	last-column
 ⊢⌿	last-first
+⊢⌿	last-row
+⊣/	first-column
+⊣⌿	first-row
 (*∘0.5)	square-root
+(*∘0.5)	sqrt
 (*∘÷∘3)	cube-root
+(*∘÷∘3)	cbrt
 =⍨	fill-ones
 (⍴∘1)	ones
 ≠⍨	fill-zeros
@@ -280,7 +301,7 @@ sort: original
 (180÷⍨○)	deg->rad
 (30÷○∘÷)	rad-per-sec->rpm
 (30÷⍨○)	rpm->rad-per-sec
-(∪⊢∨¯1↓⍳)	divisor
+(∪⊢∨¯1↓⍳)	divisors
 {(⎕D,⎕A)[1+16⊥⍣¯1⊢⍵]}	hex-disp
 ⊂[1]	matrix->box
 ⌷⍨∘⊂⍨	from
@@ -295,10 +316,23 @@ sort: original
 {⍺←⍬⋄2 ⍺⍺⍨/⍺,⍵}	prior
 (2-⍨/,,⍨1↑,)	deltas
 (1,2≢⍨/,)	differ
-(+/÷≢)	avg
-(((+/÷≢)×⍨)-(×⍨((+/÷≢)⊢)))	var
-(((+/÷≢)×)-((+/÷≢)⊣)×((+/÷≢)⊢))	cov
+(+⌿÷≢)	avg
+(+⌿÷≢)	average
+(+⌿÷≢)	arithmetic-mean
+((+⌿÷≢)⍤×⍨-×⍨∘(+⌿÷≢))	var
+((+⌿÷≢)⍤×-×⍥(+⌿÷≢))	cov
 ((⌊÷)×⊢)⍨	xbar
+(+⍀÷((1-⎕IO)+⍳)⍤≢)	avgs
+({(+⍀÷((1-⎕IO)+⍳)⍤≢)⍵↑⍨⍺-1},(+⌿÷⊣))	mavg
+(+⌿÷⊣)	mavg-simple
+(+.×÷1⊥⊣)	wavg
+(⊃((+⌿÷≢),×⌿*∘÷≢)⍣≡)	arithmetic–geometric-mean
+(⊃((+⌿÷≢),×⌿*∘÷≢)⍣≡)	agm
+(×⌿*∘÷≢)	geometric-mean
+(*∘0.5(+⌿×⍨)÷≢)	root-mean-square
+(*∘0.5(+⌿×⍨)÷≢)	rms
+(÷∘(2*0.5))	peak->rms
+(×∘(2*0.5))	rms->peak
 {⊃⍺⍺⍨/(⌽⍵),⊂⍺}	foldl
 0∘○	sin<->cos
 1∘○	sin
@@ -364,12 +398,30 @@ sort: original
 (⍳⍨=⍳∘≢)	unique-mask
 {(-⍺)↑¨(+\⍺)↑¨⊂⍵}	partition-by-length
 ((⍸⍣¯1⊣)⊂⊢)	cut
-(+\÷(((1-⎕IO)+⍳)≢))	avgs
-(((+\÷(((1-⎕IO)+⍳)≢))((¯1+⊣)↑⊢)),(+/÷⊣))	mavg
-(+/÷⊣)	mavg-simple
-(+.×÷1⊥⊣)	wavg
 (⊃≠⊢⍤/>-<)	compare-ordered
 (⊃≠⊢⍤/-)	first-difference
 (>-<)	compare
+(⊃≠⊢⍤/<)	less-than-ordered
+(~(⊃≠⊢⍤/>))	less-or-equal-ordered
+(~(⊃≠⊢⍤/<))	greater-or-equal-ordered
+(⊃≠⊢⍤/>)	greater-than-ordered
+{>/⍒⍺⍵}	structural-less-than
+{</⍋⍺⍵}	structural-less-or-equal
+{</⍒⍺⍵}	structural-greater-or-equal
+{>/⍋⍺⍵}	structural-greater-than
 ⊢⍤/	filter
 )ed ○	edit-class-script
+{(⍺<⌈/⍵)∧⍺>⌊/⍵}	between
+≠/	parity-function
+≠/	has-odd-number-of-ones
+]create	link-namespace-with-directory
+]map	display-namespace-tree
+]peek	peek-namespace-and-execute
+(⌊.5∘+)	round
+(××∘⌊|)	trunc
+(××∘⌊|)	truncate
+{(⊃⍵)+⍺×⎕IO-⍨⍳⌊|⍺÷⍨-/⍵}	stride
+¯1∘↓	drop-last
+{k v←↓[⎕IO]⍵ ⋄ v⊃⍨(↑k)⍳⊂⍺}	get-value-from
+{⍵⍵ ⍵:∇ ⍺⍺ ⍵ ⋄ ⍵}	while
+(⊢∘-∘≢↑⍪⍨)	shift-after
