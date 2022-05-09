@@ -246,6 +246,8 @@ sort: original
 ⎕DT	date-time
 ⎕CR	canonical-representation
 ⎕CR	definition-as-chars
+⎕DR	data-representation
+⎕DR	type
 ⎕NS	create-namespace
 ⎕NS	copy-namespace
 ⎕CY	copy-workspace
@@ -343,7 +345,9 @@ sort: original
 (30÷⍨○)	rpm->rad-per-sec
 (∪⊢∨¯1↓⍳)	divisors
 {(⎕D,⎕A)[1+16⊥⍣¯1⊢⍵]}	hex-disp
-⊂[1]	matrix->box
+⊂[⎕IO]	matrix->vector-of-column-vectors
+⊂[⎕IO]	enclose-column
+(↑¨⊂[⎕IO])	invert-table
 ⌷⍨∘⊂⍨	from
 ⌷⍨∘⊂⍨	select
 ⌷⍨∘⊂⍨	swizzle
@@ -353,8 +357,9 @@ sort: original
 (!×∘!⊣)	order-of-out-of
 {{,[⍳2]↑(⊂⊂⎕IO,1+⍵)⌷¨⍒¨↓∘.=⍨⍳1+1↓⍴⍵}⍣⍵⍉⍪⍬}	prm
 (⌊÷)	intdiv
-{2 ⍺⍺⍨/⍵}	prior
-{2 ⍺⍺⍨/⍺,⍵}	prior-seeded
+{(⊣/⍵),2⍺⍺⍨/⍵}	prior
+{2⍺⍺⍨/⍵}	prior-apl
+{2⍺⍺⍨/⍺,⍵}	prior-seeded
 {2-⍨/0,⍵}	deltas
 {0,2-⍨/⍵}	deltas-zero
 {2÷⍨/1,⍵}	ratios
@@ -533,3 +538,4 @@ sort: original
 (⊢÷⍨⊢+/⍤×1∘⌽)	wye->delta-opposite
 (+/÷⍨1∘⌽×¯1∘⌽)	d->y-opposite
 (+/÷⍨1∘⌽×¯1∘⌽)	delta->wye-opposite
+(⊃0∘⍴)	fill-element
