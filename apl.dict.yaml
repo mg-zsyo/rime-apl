@@ -36,6 +36,7 @@ sort: original
 ¨	each
 ¯	negative
 ¯	high-minus
+¯	--
 <	less-than
 ≤	less-or-equal
 ≤	up-to
@@ -44,12 +45,16 @@ sort: original
 ≥	at-least
 >	greater-than
 ≠	not-equal
+≠	unique-mask
+≠	nub-sieve
 ∨	or
 ∨	gcd
 ∨	greatest-common-divisor
+∨	vel
 ∧	and
 ∧	lcm
 ∧	lowest-common-multiple
+∧	wedge
 !	factorial
 !	binomial
 !	out-of
@@ -64,12 +69,15 @@ sort: original
 ⌹	domino
 ÷	divided-by
 ÷	reciprocal
+÷	quotient
 ÷	dd
 ⍷	find
+⍷	subarray
 ⍨	commute
 ⍨	constant
 ⍨	selfie
 ⍸	where
+⍸	bin
 ⍥	over
 ⍣	power-operator
 ⍣	repeat
@@ -115,8 +123,8 @@ sort: original
 ←	arrow-left
 ←	assign
 ←	<-
+←	is<-
 ←	tis
-←	tt
 →	arrow-right
 →	goto
 ⊢	tack-right
@@ -143,6 +151,7 @@ sort: original
 ⌊	floor
 ⌊	minimum
 ∇	recursion
+∇∇	recursion-operator
 ∘	jot
 ∘	beside
 ∘	bind
@@ -150,6 +159,7 @@ sort: original
 ⎕	input
 ⎕	output
 ⍎	execute
+⍎	evaluate
 ⍕	format
 ⊆	shoe-underbar
 ⊆	nest
@@ -207,7 +217,7 @@ sort: original
 .	product
 .	inner-product
 ∘.	outer-product
-@	at
+@	at-operator
 ä	a-umlaut
 Ä	a-umlaut-upper
 ö	o-umlaut
@@ -215,9 +225,9 @@ sort: original
 ü	u-umlaut
 Ü	u-umlaut-upper
 ß	eszett
-∆	delta
+∆	delta-symbol
 ⍙	delta-underscore
-∇	del
+∇	del-symbol
 ⎕A	alphabet
 ⎕Á	national-alphabet
 ⎕D	digits
@@ -234,15 +244,42 @@ sort: original
 ⎕S	search
 ⎕TS	timestamp
 ⎕DT	date-time
+⎕CR	canonical-representation
+⎕CR	definition-as-chars
+⎕NS	create-namespace
+⎕NS	copy-namespace
 ⎕CY	copy-workspace
 {(⍎⍵⎕NS⍬).⎕CY ⍵}	copy-workspace-to-namespace
+⎕UCS	unicode-convert
+('UTF-8'⎕UCS⊢)	utf-eight-encoding-of
+⎕PROFILE 'start'	profiling-start
+⎕PROFILE 'stop'	profiling-suspend
+⎕PROFILE 'clear'	profiling-clear
+]profile	profiling-show
 ⎕CLEAR	clear
 )ERASE	erase
 )si	list-si
 )sic	clear-si
+)ed ∇	edit-fn-or-op
+)ed →	edit-char-vector
+)ed ∊	edit-char-vector-of-vectors
+)ed -	edit-char-matrix
+)ed ○	edit-class-script
+)ed ⍟	edit-namespace-script
 ]help	help
 ]disp	display-mid
 ]display	display-max
+]create	link-namespace-with-directory
+]map	display-namespace-tree
+]peek	peek-namespace-and-execute
+0::	catch-error
+3::	catch-index-error
+4::	catch-rank-error
+5::	catch-length-error
+6::	catch-value-error
+10::	catch-limit-error
+11::	catch-domain-error
+⎕SIGNAL	throw
   (f g h) ⍵ ⍝↔ (  f ⍵) g (  h ⍵)	fork
 ⍺ (f g h) ⍵ ⍝↔ (⍺ f ⍵) g (⍺ h ⍵)	fork
   (A g h) ⍵ ⍝↔       A g (  h ⍵)	fork
@@ -258,10 +295,10 @@ sort: original
 ∧/	all
 ×/	prd
 ×\	prds
-×\	cumprd
+{×\[⍺]⍵}	cumprod
 +/	sum
 +\	sums
-+\	cumsum
+{+\[⍺]⍵}	cumsum
 ((+\(¯1+⊣)↑⊢),+/)	msum
 ⌈/	max-of
 ⌊/	min-of
@@ -271,6 +308,8 @@ sort: original
 ⊢⌿	last-row
 ⊣/	first-column
 ⊣⌿	first-row
+⊢⍤/	filter
+⊢⍤⌿	filter-first
 (*∘0.5)	square-root
 (*∘0.5)	sqrt
 (*∘÷∘3)	cube-root
@@ -284,6 +323,10 @@ sort: original
 (⌽≡⊢)	is-palindrome
 (⊂∘⍋⌷⊢)	sort-up
 (⊂∘⍒⌷⊢)	sort-down
+(⊂∘⍋⌷⊢)	asc
+(⊂∘⍒⌷⊢)	desc
+⍋	iasc
+⍒	idesc
 (⊃⌽,)	bottom-right
 ⊂∘⊃	corner
 +.×	matrix-multiply
@@ -291,9 +334,6 @@ sort: original
 (+⌿×)	wsum
 (1⌽(⊣×1⌽⊢)-⊢×1⌽⊣)	cross-product
 ∘.,	cartesian-product
-(×÷+)	parallel
-(÷(+/÷))	parallel-sum
-(÷(+/÷))	total-parallel-resistance
 (10∘⊥⍣¯1)	digits-of
 {≢⍵}⌸	frequency
 {⍺,≢⍵}⌸	frequency-dict
@@ -313,14 +353,21 @@ sort: original
 (!×∘!⊣)	order-of-out-of
 {{,[⍳2]↑(⊂⊂⎕IO,1+⍵)⌷¨⍒¨↓∘.=⍨⍳1+1↓⍴⍵}⍣⍵⍉⍪⍬}	prm
 (⌊÷)	intdiv
-{⍺←⍬⋄2 ⍺⍺⍨/⍺,⍵}	prior
-(2-⍨/,,⍨1↑,)	deltas
-(1,2≢⍨/,)	differ
+{2 ⍺⍺⍨/⍵}	prior
+{2 ⍺⍺⍨/⍺,⍵}	prior-seeded
+{2-⍨/0,⍵}	deltas
+{0,2-⍨/⍵}	deltas-zero
+{2÷⍨/1,⍵}	ratios
+{1,2÷⍨/⍵}	ratios-one
+(1,2≢/,)	differ
+{1⍪2≢⌿⍵}	differ-column
+{1,2≢/⍵}	differ-row
 (+⌿÷≢)	avg
 (+⌿÷≢)	average
 (+⌿÷≢)	arithmetic-mean
 ((+⌿÷≢)⍤×⍨-×⍨∘(+⌿÷≢))	var
 ((+⌿÷≢)⍤×-×⍥(+⌿÷≢))	cov
+((≢÷¯1+≢)×(+⌿÷≢)⍤×⍨-×⍨∘(+⌿÷≢))	svar
 ((⌊÷)×⊢)⍨	xbar
 (+⍀÷((1-⎕IO)+⍳)⍤≢)	avgs
 ({(+⍀÷((1-⎕IO)+⍳)⍤≢)⍵↑⍨⍺-1},(+⌿÷⊣))	mavg
@@ -329,6 +376,10 @@ sort: original
 (⊃((+⌿÷≢),×⌿*∘÷≢)⍣≡)	arithmetic–geometric-mean
 (⊃((+⌿÷≢),×⌿*∘÷≢)⍣≡)	agm
 (×⌿*∘÷≢)	geometric-mean
+(≢÷1⊥÷)	harmonic-mean
+(×÷+)	parallel
+(÷+/⍤÷)	parallel-sum
+(÷+/⍤÷)	total-parallel-resistance
 (*∘0.5(+⌿×⍨)÷≢)	root-mean-square
 (*∘0.5(+⌿×⍨)÷≢)	rms
 (÷∘(2*0.5))	peak->rms
@@ -362,16 +413,14 @@ sort: original
 ¯12∘○	exp-j-times
 ¯12∘○	cos-jsin
 (⊣×¯12○⊢)	phasor
+(9 11○⊂)	complex->real-and-imaginary-parts
+(10 12○⊂)	complex->magnitude-and-phase-parts
 (÷3∘○)	cot
 (÷2∘○)	sec
 (÷1∘○)	csc
-{-/×⌿0 1⌽⍵}	det2
-{-/+/×/[2](2 3⍴0 1 2 0 2 1)⌽↑⍵ ⍵}	det3
-(⊃∘⊃({-⍺+.×⍨(+\-+/)@(∘.=⍨⍳∘≢)⍵×∘.≤⍨⍳≢⍵}/≢⍴⊂))	detn
-(,⍤0)	merge-to-matrix
-(,,⍤0)	merge-to-vector
-(,¨)	zip
-⍉∘↑	unzip
+{-/×⌿0 1⌽⍵}	det-two
+{-/+/×/[⎕IO+1](2 3⍴0 1 2 0 2 1)⌽↑⍵ ⍵}	det-three
+(⊃∘⊃({-⍺+.×⍨(+\-+/)@(∘.=⍨⍳∘≢)⍵×∘.≤⍨⍳≢⍵}/≢⍴⊂))	det-n
 (0.5*⍨(+/2*⍨⊢))	euclidean-norm
 (0.5*⍨(+/2*⍨⊢))	srss
 ((|-)÷⊢)	relative-error
@@ -397,7 +446,29 @@ sort: original
 (0=⎕NC)	is-undefined-variable
 (⍳⍨=⍳∘≢)	unique-mask
 {(-⍺)↑¨(+\⍺)↑¨⊂⍵}	partition-by-length
-((⍸⍣¯1⊣)⊂⊢)	cut
+(⍸⍤⊣⊆⊢)	partition-by-length-non-empty
+⊂⍨∘(⍸⍣¯1)⍨	cut
+⊂⍨∘(⍸⍣¯1)⍨	partition-by-index
+(≠⊆⊢)	split-if-equal-to-x
+(~⍤∊⍨⊆⊢)	split-if-x-includes
+(≢⍤⊣↓¨,⊂⍨⊣⍷,)	split-by-x
+{⊃⍪/1↓,(⊂⍺),⍪⍵}	join-with-x
+(1↓∘,,⍤0)	join-with-scalar-x
+(,⍤0)	laminate
+,[⎕IO-0.5]	laminate-first
+{,[⍳⍺]⍵}	merge-first-x-axes
+{,⍤⍺⊢⍵}	merge-last-x-axes
+(,⍤0)	merge-to-matrix
+(,,⍤0)	merge-to-vector
+(,,⍤1 0)	insert-before-each
+(,,⍤0 1⍨)	insert-after-each
+(,¨)	zip
+⍉∘↑	unzip
+{↓⍉↑⍵}	transposed-vector-of-vectors
+{⍵⌿⍨(≢⍵)⍴1,⍨0⍴⍨⍺-1}	keep-every-xth-first
+{⍵/⍨(⊢/⍴⍵)⍴1,⍨0⍴⍨⍺-1}	keep-every-xth
+{⍵⌿⍨(≢⍵)⍴0,⍨1⍴⍨⍺-1}	remove-every-xth-first
+{⍵/⍨(⊢/⍴⍵)⍴0,⍨1⍴⍨⍺-1}	remove-every-xth
 (⊃≠⊢⍤/>-<)	compare-ordered
 (⊃≠⊢⍤/-)	first-difference
 (>-<)	compare
@@ -409,19 +480,56 @@ sort: original
 {</⍋⍺⍵}	structural-less-or-equal
 {</⍒⍺⍵}	structural-greater-or-equal
 {>/⍋⍺⍵}	structural-greater-than
-⊢⍤/	filter
-)ed ○	edit-class-script
+{(⍋-⍥⊃⍒)⍺⍵}	structural-compare
 {(⍺<⌈/⍵)∧⍺>⌊/⍵}	between
+(⎕IO=⍸)⍨	within-range-in-ex
 ≠/	parity-function
 ≠/	has-odd-number-of-ones
-]create	link-namespace-with-directory
-]map	display-namespace-tree
-]peek	peek-namespace-and-execute
 (⌊.5∘+)	round
 (××∘⌊|)	trunc
 (××∘⌊|)	truncate
-{(⊃⍵)+⍺×⎕IO-⍨⍳⌊|⍺÷⍨-/⍵}	stride
 ¯1∘↓	drop-last
 {k v←↓[⎕IO]⍵ ⋄ v⊃⍨(↑k)⍳⊂⍺}	get-value-from
 {⍵⍵ ⍵:∇ ⍺⍺ ⍵ ⋄ ⍵}	while
+{⍺⍺{⍵⍵ ⍵:⍵ ⋄ ∇ ⍺⍺ ⍵}⍵⍵ ⍺⍺ ⍵}	until
+{⍺⍺⍣⍺⊢⍵}	repeat-explicit
+{⍺⍺{⍎'⍺⍺ ⍵ ⋄ ⍵' ⋄ ⍺⍺}⍣⍺⊢⍵}	repeat-side-effect
+{{}⍬⊣⍺⍺{⍎'⍺⍺ ⍵ ⋄ ⍵' ⋄ ⍺⍺}⍣⍺⊢⍵}	repeat-side-effect-no-result
+{0=≢⍴⍵:⍺⍺ ⍵ ⋄ ⍺⍺∇∇¨⍵}	apply-scalar-fn-monadic
+{0=≡⍵:⍺⍺ ⍵ ⋄ ⍺⍺∇∇¨⍵}	apply-simple-scalar-fn-monadic
+{0=≡⍵:⍺ ⍺⍺ ⍵ ⋄ ⍺ ⍺⍺∇∇{⍺∘⍺⍺¨⍵}⍵}	apply-simple-scalar-fn-right
+{0=≡⍺:⍺ ⍺⍺ ⍵ ⋄ ⍺ ⍺⍺∇∇{⍺⍺∘⍵¨⍺}⍵}	apply-simple-scalar-fn-left
+⊢	apply-right-arg-no-stranding
+{⍺⍺ ⍺ ⍵}	apply-monadic-as-dyadic
+{⊃⍺⍺/⍵}	apply-dyadic-as-monadic
+{(⍺⍺⊣⊢)⍣⍵⍵⊢⍵}	apply-monadic-if
+{⍺(⍺⍺⊣⊢)⍣⍵⍵⊢⍵}	apply-dyadic-if
+{(⍺⍺ ⍺)⍵⍵ ⍵}	reverse-compose
+{(⍺⍺ ⍺)⍵⍵ ⍵}	before
+{(⍺⍺ ⍵)⍵⍵ ⍵}	before-monadic
+{⍺ ⍺⍺ ⍵⍵ ⍵}	withe
+{⍺ ⍺⍺ ⍵⍵ ⍵}	after
+∘	after
+{⍵ ⍺⍺ ⍵⍵ ⍵}	after-monadic
+{⍺∘⍺⍺¨⍵}	each-right
+{⍺⍺∘⍵¨⍺}	each-left
 (⊢∘-∘≢↑⍪⍨)	shift-after
+?⍨	random-permutation-int
+(⊂⍤?⍨∘≢⌷⊢)	random-shuffle
+(⊂⍤?⍨∘≢⌷⊢)	random-permutation-of
+{⍵⌷[⍺]⍨⊂?⍨≢⍵}	random-shuffle-along-axis
+(1=≢∘⍴)	is-vector
+(⍬≡⍴)	is-scalar
+(0=≡)	is-simple-scalar
+(⊂≡⊆)	is-simple
+{÷1+*-⍵}	standard-logistic
+{÷1+*-⍵}	logistic
+{⍟⍵÷1-⍵}	logit
+{⍵÷1-⍵}	odds
+(⌊/⍬)	number-max-value
+∧.=	rows-equal-to
+(1⊥∘|-)	manhattan-distance
+(⊢÷⍨⊢+/⍤×1∘⌽)	y->d-opposite
+(⊢÷⍨⊢+/⍤×1∘⌽)	wye->delta-opposite
+(+/÷⍨1∘⌽×¯1∘⌽)	d->y-opposite
+(+/÷⍨1∘⌽×¯1∘⌽)	delta->wye-opposite
