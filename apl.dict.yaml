@@ -45,6 +45,7 @@ sort: original
 ≥	at-least
 >	greater-than
 ≠	not-equal
+≠	neq
 ≠	unique-mask
 ≠	nub-sieve
 ∨	or
@@ -72,6 +73,7 @@ sort: original
 ÷	quotient
 ÷	dd
 ⍷	find
+⍷	found-in
 ⍷	subarray
 ⍨	commute
 ⍨	constant
@@ -107,6 +109,7 @@ sort: original
 ~	tilde
 ~	not
 ~	without
+~	except
 ↑	arrow-up
 ↑	mix
 ↑	take
@@ -116,6 +119,7 @@ sort: original
 ⍳	iota
 ⍳	ii
 ⍳	index-of
+⍳	find-index-of
 ○	circle
 ○	pi-times
 *	exponential
@@ -140,8 +144,11 @@ sort: original
 []	index
 ≡	depth
 ≡	match
+≡	equivalent
 ≢	tally
 ≢	not-match
+≢	nonequivalent
+≢	nqv
 ⍺	aa
 ⍺	alpha
 ⍺	left-argument
@@ -151,10 +158,13 @@ sort: original
 ⌊	floor
 ⌊	minimum
 ∇	recursion
+∇	self-fn
 ∇∇	recursion-operator
+∇∇	self-op
 ∘	jot
 ∘	beside
 ∘	bind
+∘	compose
 ⎕	quad
 ⎕	input
 ⎕	output
@@ -258,6 +268,15 @@ sort: original
 ⎕PROFILE 'stop'	profiling-suspend
 ⎕PROFILE 'clear'	profiling-clear
 ]profile	profiling-show
+⎕DL	delay
+⎕DL	sleep
+⎕TID	thread-id
+⎕TNAME	thread-name
+⎕TNUMS	thread-numbers
+⎕TCNUMS	thread-child-numbers
+⎕TKILL	thread-kill
+⎕TSYNC	thread-wait-for-result
+⎕TSYNC	wait-for-thread
 ⎕CLEAR	clear
 )ERASE	erase
 )si	list-si
@@ -282,6 +301,9 @@ sort: original
 10::	catch-limit-error
 11::	catch-domain-error
 ⎕SIGNAL	throw
+⎕SIGNAL	event-signal
+⎕EN	event-number
+⎕TRAP	event-trap
   (f g h) ⍵ ⍝↔ (  f ⍵) g (  h ⍵)	fork
 ⍺ (f g h) ⍵ ⍝↔ (⍺ f ⍵) g (⍺ h ⍵)	fork
   (A g h) ⍵ ⍝↔       A g (  h ⍵)	fork
@@ -290,6 +312,7 @@ sort: original
 ⍺ (g h) ⍵ ⍝↔ g (⍺ h ⍵)	atop
   f∘g⍨⍵ ⍝↔ ⍵ f g ⍵	hook
 ⍺ f∘g ⍵ ⍝↔ ⍺ f g ⍵	hook
+⍺⌹⍵ ⍝↔ (⌹(+⍉⍵)+.×⍵)+.×(+⍉⍵)+.×⍺	matrix-divide-equivalence
 -⍨	subtracted-from
 ÷⍨	long-division
 ×⍨	square
@@ -301,7 +324,7 @@ sort: original
 +/	sum
 +\	sums
 {+\[⍺]⍵}	cumsum
-((+\(¯1+⊣)↑⊢),+/)	msum
+((+\⊢↑⍨¯1+⊣),+/)	msum
 ⌈/	max-of
 ⌊/	min-of
 ⊢/	last
@@ -316,6 +339,7 @@ sort: original
 (*∘0.5)	sqrt
 (*∘÷∘3)	cube-root
 (*∘÷∘3)	cbrt
+*∘÷⍨	root-xth
 =⍨	fill-ones
 (⍴∘1)	ones
 ≠⍨	fill-zeros
@@ -332,6 +356,7 @@ sort: original
 (⊃⌽,)	bottom-right
 ⊂∘⊃	corner
 +.×	matrix-multiply
++.×	mmu
 +.×	dot-product
 (+⌿×)	wsum
 (1⌽(⊣×1⌽⊢)-⊢×1⌽⊣)	cross-product
@@ -347,6 +372,7 @@ sort: original
 {(⎕D,⎕A)[1+16⊥⍣¯1⊢⍵]}	hex-disp
 ⊂[⎕IO]	matrix->vector-of-column-vectors
 ⊂[⎕IO]	enclose-column
+(↓⍉)	matrix->vector-of-column-vectors
 (↑¨⊂[⎕IO])	invert-table
 ⌷⍨∘⊂⍨	from
 ⌷⍨∘⊂⍨	select
@@ -357,6 +383,8 @@ sort: original
 (!×∘!⊣)	order-of-out-of
 {{,[⍳2]↑(⊂⊂⎕IO,1+⍵)⌷¨⍒¨↓∘.=⍨⍳1+1↓⍴⍵}⍣⍵⍉⍪⍬}	prm
 (⌊÷)	intdiv
+{⊃⍺⍺⍨/(⌽⍵),⊂⍺}	foldl-seeded
+{⊃⍺⍺⍨/⌽⍵}	foldl
 {(⊣/⍵),2⍺⍺⍨/⍵}	prior
 {2⍺⍺⍨/⍵}	prior-apl
 {2⍺⍺⍨/⍺,⍵}	prior-seeded
@@ -365,8 +393,14 @@ sort: original
 {2÷⍨/1,⍵}	ratios
 {1,2÷⍨/⍵}	ratios-one
 (1,2≢/,)	differ
-{1⍪2≢⌿⍵}	differ-column
 {1,2≢/⍵}	differ-row
+{1⍪2≢⌿⍵}	differ-column
+{1⍪2≢⌿⍵}	differ-first
+(1,2≡/,)	equals
+{1,2≡/⍵}	equals-row
+{1⍪2≡⌿⍵}	equals-column
+{1⍪2≡⌿⍵}	equals-first
+{(⍺⍺⍀(⍺-1)↑⍵),⍺ ⍺⍺⌿⍵}	moving
 (+⌿÷≢)	avg
 (+⌿÷≢)	average
 (+⌿÷≢)	arithmetic-mean
@@ -374,6 +408,8 @@ sort: original
 ((+⌿÷≢)⍤×-×⍥(+⌿÷≢))	cov
 ((≢÷¯1+≢)×(+⌿÷≢)⍤×⍨-×⍨∘(+⌿÷≢))	svar
 ((⌊÷)×⊢)⍨	xbar
+{2÷⍨1⊥⍵⌷⍨⊂(⍋⍵)⌷⍨⊂(⎕IO-1)+⌈2÷⍨0 1+≢⍵}	median
+{a/⍨b=⌈/b⊣a b←↓⍉{⍺(≢⍵)}⌸⍵}	mode
 (+⍀÷((1-⎕IO)+⍳)⍤≢)	avgs
 ({(+⍀÷((1-⎕IO)+⍳)⍤≢)⍵↑⍨⍺-1},(+⌿÷⊣))	mavg
 (+⌿÷⊣)	mavg-simple
@@ -383,13 +419,23 @@ sort: original
 (×⌿*∘÷≢)	geometric-mean
 (≢÷1⊥÷)	harmonic-mean
 (×÷+)	parallel
-(÷+/⍤÷)	parallel-sum
-(÷+/⍤÷)	total-parallel-resistance
-(*∘0.5(+⌿×⍨)÷≢)	root-mean-square
-(*∘0.5(+⌿×⍨)÷≢)	rms
+(÷1⊥÷)	parallel-sum
+(÷1⊥÷)	total-parallel-resistance
+(*∘0.5(1⊥×⍨)÷≢)	root-mean-square
+(*∘0.5(1⊥×⍨)÷≢)	rms
+(*∘0.5(1⊥×⍨)÷≢)	quadratic-mean
 (÷∘(2*0.5))	peak->rms
 (×∘(2*0.5))	rms->peak
-{⊃⍺⍺⍨/(⌽⍵),⊂⍺}	foldl
+((+⌿÷≢)2*⍨-)	mean-squared-error
+((+⌿÷≢)2*⍨-)	mse
+(3÷⍨++0.5*⍨×)	heronian-mean
+(≢÷⍨1⊥⊢|⍤-+⌿÷≢)	mad-around-mean
+(≢÷⍨1⊥⊢|⍤-+⌿÷≢)	mean-absolute-deviation-around-mean
+(≢⍤⊢÷⍨1⊥|⍤-)	mad-around-x-train
+{(1⊥|⍺-⍵)÷≢⍵}	mad-around-x
+{(1⊥|⍺-⍵)÷≢⍵}	mean-absolute-deviation-around-x
+{(1⊥|⍺-⍵)÷≢⍵}	mae
+{(1⊥|⍺-⍵)÷≢⍵}	mean-absolute-error
 0∘○	sin<->cos
 1∘○	sin
 2∘○	cos
@@ -417,22 +463,31 @@ sort: original
 ¯11∘○	j-times
 ¯12∘○	exp-j-times
 ¯12∘○	cos-jsin
-(⊣×¯12○⊢)	phasor
 (9 11○⊂)	complex->real-and-imaginary-parts
 (10 12○⊂)	complex->magnitude-and-phase-parts
+{⍺+¯11○⍵}	real-and-imaginary-parts->complex
+{⍺+¯11○⍵}	j-join-real-and-imaginary-parts
+(⊣×¯12○⊢)	phasor
+{⍺×¯12○⍵}	magnitude-and-phase-parts->complex
 (÷3∘○)	cot
 (÷2∘○)	sec
 (÷1∘○)	csc
 {-/×⌿0 1⌽⍵}	det-two
 {-/+/×/[⎕IO+1](2 3⍴0 1 2 0 2 1)⌽↑⍵ ⍵}	det-three
 (⊃∘⊃({-⍺+.×⍨(+\-+/)@(∘.=⍨⍳∘≢)⍵×∘.≤⍨⍳≢⍵}/≢⍴⊂))	det-n
-(0.5*⍨(+/2*⍨⊢))	euclidean-norm
-(0.5*⍨(+/2*⍨⊢))	srss
-((|-)÷⊢)	relative-error
-(⎕IO+(⊢⊤⎕IO-⍨(⍳×/)))	odometer
+(|⍤-÷⊢)	relative-error
+(0.5*⍨1⊥×⍨)	euclidean-norm-train
+{0.5*⍨1⊥×⍨⍵}	euclidean-norm
+{0.5*⍨1⊥×⍨⍵}	srss
+(0.5*⍨1⊥×⍨⍤-)	euclidean-distance-train
+{0.5*⍨1⊥×⍨⍺-⍵}	euclidean-distance
+(1⊥∘|-)	manhattan-distance
+(⌈/∘|-)	chebyshev-distance
+(⎕IO+⊢⊤⎕IO-⍨∘⍳×/)	odometer
 ⍴∘⊂	copy
 (,⍨⍴1↑⍨1∘+)	identity-matrix-of-rank
-((0⍴⍨((⊢×0<⊢)-),⊢)⍪⍨(⌊,⊢)⍴1↑⍨1+⊢)	eye
+((0⍴⍨⊢,⍨>×-)⍪⍨(⌊,⊢)⍴1↑⍨1+⊢)	eye-dyadic
+((0⍴⍨⊣,⍨<×-⍨)⍨⍪⍨(⌊,⊢)⍴1↑⍨1+⊢)	eye
 (⊢×0<⊢)	map-negative-to-zero
 (¯1*~)	map-bool-to-sign
 ⍸@⊢	map-true-to-iota
@@ -470,10 +525,12 @@ sort: original
 (,¨)	zip
 ⍉∘↑	unzip
 {↓⍉↑⍵}	transposed-vector-of-vectors
-{⍵⌿⍨(≢⍵)⍴1,⍨0⍴⍨⍺-1}	keep-every-xth-first
-{⍵/⍨(⊢/⍴⍵)⍴1,⍨0⍴⍨⍺-1}	keep-every-xth
-{⍵⌿⍨(≢⍵)⍴0,⍨1⍴⍨⍺-1}	remove-every-xth-first
-{⍵/⍨(⊢/⍴⍵)⍴0,⍨1⍴⍨⍺-1}	remove-every-xth
+{⍵⌿⍨(≢⍵)⍴⌽1↑⍨⍺}	keep-every-xth-first
+{⍵/⍨(⊢/⍴⍵)⍴⌽1↑⍨⍺}	keep-every-xth
+{⍵⌿⍨(≢⍵)⍴~⌽1↑⍨⍺}	remove-every-xth-first
+{⍵/⍨(⊢/⍴⍵)⍴~⌽1↑⍨⍺}	remove-every-xth
+{⍵(↑⍪⍺⍪↓)⍨⍺⍺-⎕IO}	insert-at-io-based
+{⍺⍺(↑⍪⍺⍪↓)⍵}	insert-at
 (⊃≠⊢⍤/>-<)	compare-ordered
 (⊃≠⊢⍤/-)	first-difference
 (>-<)	compare
@@ -485,7 +542,7 @@ sort: original
 {</⍋⍺⍵}	structural-less-or-equal
 {</⍒⍺⍵}	structural-greater-or-equal
 {>/⍋⍺⍵}	structural-greater-than
-{(⍋-⍥⊃⍒)⍺⍵}	structural-compare
+{⊃(⍋-⍒)⍺⍵}	structural-compare
 {(⍺<⌈/⍵)∧⍺>⌊/⍵}	between
 (⎕IO=⍸)⍨	within-range-in-ex
 ≠/	parity-function
@@ -495,6 +552,8 @@ sort: original
 (××∘⌊|)	truncate
 ¯1∘↓	drop-last
 {k v←↓[⎕IO]⍵ ⋄ v⊃⍨(↑k)⍳⊂⍺}	get-value-from
+{⎕TSYNC ⍺ ⍺⍺&¨⍵}	peach-dyadic
+{⎕TSYNC ⍺⍺&¨⍵}	peach-monadic
 {⍵⍵ ⍵:∇ ⍺⍺ ⍵ ⋄ ⍵}	while
 {⍺⍺{⍵⍵ ⍵:⍵ ⋄ ∇ ⍺⍺ ⍵}⍵⍵ ⍺⍺ ⍵}	until
 {⍺⍺⍣⍺⊢⍵}	repeat-explicit
@@ -518,6 +577,8 @@ sort: original
 {⍵ ⍺⍺ ⍵⍵ ⍵}	after-monadic
 {⍺∘⍺⍺¨⍵}	each-right
 {⍺⍺∘⍵¨⍺}	each-left
+{⍺⍺ ⍵:⍵⍵ ⍵ ⋄ 0}	short-circuit-and
+{⍺⍺ ⍵:1 ⋄ ⍵⍵ ⍵}	short-circuit-or
 (⊢∘-∘≢↑⍪⍨)	shift-after
 ?⍨	random-permutation-int
 (⊂⍤?⍨∘≢⌷⊢)	random-shuffle
@@ -533,9 +594,28 @@ sort: original
 {⍵÷1-⍵}	odds
 (⌊/⍬)	number-max-value
 ∧.=	rows-equal-to
-(1⊥∘|-)	manhattan-distance
 (⊢÷⍨⊢+/⍤×1∘⌽)	y->d-opposite
 (⊢÷⍨⊢+/⍤×1∘⌽)	wye->delta-opposite
 (+/÷⍨1∘⌽×¯1∘⌽)	d->y-opposite
 (+/÷⍨1∘⌽×¯1∘⌽)	delta->wye-opposite
 (⊃0∘⍴)	fill-element
+(1=≢∘∪∘,)	identical-simple-elements
+(1=≢∘∪)	identical-major-cells
+(1=≢∘∪⍤1)	identical-each-row
+(↑'×'⍴¨⍨⌊)	histogram
+0.5∘(⊣*⍨+.××.-0,⊢)	herons-formula
+0.5∘(⊣*⍨+.××.-0,⊢)	area-of-triangle<-sides
+(0 2∊⍨10|⎕DR)	is-char
+{⍵⍴⍨⍺⊣@(0∘=)⍨⌊(≢,⍵)÷×/⍺~0}	reshape-fit-zero
+{⍵⍴⍨⍺×@(<∘0)⍨⌈(≢,⍵)÷×/⍺~0}	reshape-fit-negative
+{↑,,⌿↑⍉↓¨×∘⍵¨⍺}	kronecker-product
+(⍉≡+)	is-hermitian
+{⍵⌽⌽⍺↑1}	one-hot-encode-in-x-bits
+(⎕IO-⍨⍸∘⌽)	one-hot-decode
+{⍪⌽(1+2⊥⍵)⌽1↑⍨2*≢⍵}	qubit-basis-state
+(⍪1 0)	ket-zero
+(⍪0 1)	ket-one
+(2 2⍴0 1 1 0)	pauli-x-gate
+(2 2⍴0 0j¯1 0j1 0)	pauli-y-gate
+(2 2⍴1 0 0 ¯1)	pauli-z-gate
+(2 2⍴1 0 0,¯12∘○)	phase-shift-gate
