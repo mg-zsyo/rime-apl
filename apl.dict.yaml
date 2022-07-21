@@ -288,6 +288,7 @@ sort: original
 )ed ○	edit-class-script
 )ed ⍟	edit-namespace-script
 ]help	help
+]runtime	time-the-expr
 ]disp	display-mid
 ]display	display-max
 ]create	link-namespace-with-directory
@@ -312,6 +313,10 @@ sort: original
 ⍺ (g h) ⍵ ⍝↔ g (⍺ h ⍵)	atop
   f∘g⍨⍵ ⍝↔ ⍵ f g ⍵	hook
 ⍺ f∘g ⍵ ⍝↔ ⍺ f g ⍵	hook
+⊢←	update
+⊢←	assign-nonlocal
+,←	push
+↓⍨←	pop
 ⍺⌹⍵ ⍝↔ (⌹(+⍉⍵)+.×⍵)+.×(+⍉⍵)+.×⍺	matrix-divide-equivalence
 -⍨	subtracted-from
 ÷⍨	long-division
@@ -385,6 +390,8 @@ sort: original
 (⌊÷)	intdiv
 {⊃⍺⍺⍨/(⌽⍵),⊂⍺}	foldl-seeded
 {⊃⍺⍺⍨/⌽⍵}	foldl
+{⊢⍺⍺{c⊢←c ⍺⍺ ⍵}¨⍵⊣c←⍺}	scanl-seeded
+{c←⊃⍵ ⋄ (1↑⍵),⍺⍺{c⊢←c ⍺⍺ ⍵}¨1↓⍵}	scanl
 {(⊣/⍵),2⍺⍺⍨/⍵}	prior
 {2⍺⍺⍨/⍵}	prior-apl
 {2⍺⍺⍨/⍺,⍵}	prior-seeded
@@ -486,9 +493,19 @@ sort: original
 (⎕IO+⊢⊤⎕IO-⍨∘⍳×/)	odometer
 ⍴∘⊂	copy
 (,⍨⍴1↑⍨1∘+)	identity-matrix-of-rank
-((0⍴⍨⊢,⍨>×-)⍪⍨(⌊,⊢)⍴1↑⍨1+⊢)	eye-dyadic
-((0⍴⍨⊣,⍨<×-⍨)⍨⍪⍨(⌊,⊢)⍴1↑⍨1+⊢)	eye
-(⊢×0<⊢)	map-negative-to-zero
+(⊣↑,⍨⍤⊢⍴1↑⍨1+⊢)	eye
+(0∘⌈)	map-negative-to-zero
+(0∘⌈)	rectifier
+(0∘⌈)	relu
+(0∘<)	relu-derivative
+(0∘<)	heaviside-zero-at-zero
+(0∘≤)	unit-step-discrete
+(0∘≤)	heaviside-one-at-zero
+(0∘⌈)	rectified-linear-unit
+(0∘⌈)	ramp
+(0∘⌈)	positive-part-of
+(0⌈-)	negative-part-of
+{2÷⍨1+×⍵}	heaviside-half-maximum
 (¯1*~)	map-bool-to-sign
 ⍸@⊢	map-true-to-iota
 ((1-⎕IO)+⍸)@⊢	map-true-to-enum
@@ -500,8 +517,16 @@ sort: original
 {r⊣⍺⍺{r,∘⊂←⍺⍺ ⍵}⍣⍵⍵⊃r←⊂⍵}	iterate-monadic
 {r⊣⍺ ⍺⍺{r,∘⊂←⍺ ⍺⍺ ⍵}⍣⍵⍵⊃r←⊂⍵}	iterate-dyadic
 (⊢⍴(⍳×/))	iota-by-shape
-{(⊃⍋)¨↓[⍺]⍵}	argmin
-{(⊃⍒)¨↓[⍺]⍵}	argmax
+{(⊃⍋)¨↓[⍺]⍵}	argmin-axis-x
+{(⊃⍒)¨↓[⍺]⍵}	argmax-axis-x
+(⊃⍒)	argmax
+{(⊃∘⍒⌷⊢)¨↓[⍺]⍵}	max-of-axis-x
+{↑[⍺](⍳∘≢=⊃∘⍒)¨↓[⍺]⍵}	argmax-onehot-axis-x
+(⍳∘≢=⊃∘⍒)	argmax-onehot
+{↑[⍺](*÷1⊥*)¨↓[⍺]⍵}	softmax-axis-x
+(*÷1⊥*)	softmax
+{(⍟1⊥*)¨↓[⍺]⍵}	log-sum-exp-axis-x
+(⍟1⊥*)	log-sum-exp
 +∘÷/	continued-fraction
 (0=⎕NC)	is-undefined-variable
 (⍳⍨=⍳∘≢)	unique-mask
@@ -530,7 +555,9 @@ sort: original
 {⍵⌿⍨(≢⍵)⍴~⌽1↑⍨⍺}	remove-every-xth-first
 {⍵/⍨(⊢/⍴⍵)⍴~⌽1↑⍨⍺}	remove-every-xth
 {⍵(↑⍪⍺⍪↓)⍨⍺⍺-⎕IO}	insert-at-io-based
-{⍺⍺(↑⍪⍺⍪↓)⍵}	insert-at
+{⍺⍺(↑⍪⍺⍪↓)⍵}	insert-at-zero-based
+(⊂⍤¯1)	enclose-major-cells
+(,⊂⍤¯1)	array->vector-of-major-cells
 (⊃≠⊢⍤/>-<)	compare-ordered
 (⊃≠⊢⍤/-)	first-difference
 (>-<)	compare
@@ -551,7 +578,10 @@ sort: original
 (××∘⌊|)	trunc
 (××∘⌊|)	truncate
 ¯1∘↓	drop-last
-{k v←↓[⎕IO]⍵ ⋄ v⊃⍨(↑k)⍳⊂⍺}	get-value-from
+{⍵[;⎕IO+1]⊃⍨(↑⍵[;⎕IO])⍳⊂⍺}	get-value-from
+{(⍵[;⎕IO+1],⊂⍬)⊃⍨(↑⍵[;⎕IO])⍳⊂⍺}	get-value-empty-if-none
+{k(,⍤0)⍺⍺@((↑k)⍳⊂⍺)⊢⍵[;⎕IO+1]⊣k←⍵[;⎕IO]}	set-value-to
+{⍵[;⎕IO](,⍤0)⍺⍺¨⍵[;⎕IO+1]}	each-value
 {⎕TSYNC ⍺ ⍺⍺&¨⍵}	peach-dyadic
 {⎕TSYNC ⍺⍺&¨⍵}	peach-monadic
 {⍵⍵ ⍵:∇ ⍺⍺ ⍵ ⋄ ⍵}	while
@@ -577,13 +607,19 @@ sort: original
 {⍵ ⍺⍺ ⍵⍵ ⍵}	after-monadic
 {⍺∘⍺⍺¨⍵}	each-right
 {⍺⍺∘⍵¨⍺}	each-left
+{⍺⍺⍤¯1⊢⍵}	each-major-cell-monadic
+{⍺ ⍺⍺⍤¯1⊢⍵}	each-major-cell-dyadic
 {⍺⍺ ⍵:⍵⍵ ⍵ ⋄ 0}	short-circuit-and
 {⍺⍺ ⍵:1 ⋄ ⍵⍵ ⍵}	short-circuit-or
-(⊢∘-∘≢↑⍪⍨)	shift-after
+(-∘≢⍤⊣↑⍪)	shift-after-left
+(-∘≢⍤⊢↑⍪⍨)	shift-after
+(≢⍤⊢↑⍪)	shift-before
 ?⍨	random-permutation-int
 (⊂⍤?⍨∘≢⌷⊢)	random-shuffle
 (⊂⍤?⍨∘≢⌷⊢)	random-permutation-of
 {⍵⌷[⍺]⍨⊂?⍨≢⍵}	random-shuffle-along-axis
+(?⍴)	random-roll-x-times
+{?⍵⍴0}	random-between-zero-one
 (1=≢∘⍴)	is-vector
 (⍬≡⍴)	is-scalar
 (0=≡)	is-simple-scalar
@@ -619,3 +655,19 @@ sort: original
 (2 2⍴0 0j¯1 0j1 0)	pauli-y-gate
 (2 2⍴1 0 0 ¯1)	pauli-z-gate
 (2 2⍴1 0 0,¯12∘○)	phase-shift-gate
+(¯1+⊢*⍨1+÷)	effective-interest-rate-nominal-x-period-y
+{c←⊃⍵ ⋄ (1↑⍵),⍺{c⊢←(⍵×⍺)+c×1-⍺}¨1↓⍵}	ema
+{(⊂⍵⍳⍨∪⍵)⌷⍺⍺¨⍵{⊂⍵}⌸⍺}	fby
+(+⌿⊥⍣¯1)⍣≡	digital-root-base-x
+(⊥⍣¯1)	base-x
+(×⍤⊢×|⍥|)⍨	remainder-truncated
+,⍥⊂	pair
+,⍥⊆	link
+{2!1+⍵}	triangular-number
+(×∘⍴⍴⊢)	repeat-vector
+(,∘⍴⍴⊢)	genarray
+{2-⍨/⍵⌊⍺,⍵}	tax-brackets-allot
+{2-⍨/⍵⌊⍺,⍵}	bands-over-each-x
+(2⊥⍣¯1⊢6 15 10 11)	amongus
+(∨/(</1 0 0 1⌽,⍤0∘(2⌽⊢)⍥(2∘(↑(⊣,+)↓))))	not-overlap-x-y-w-h-rect
+('\${.+}'⎕R{⍕⍎2↓¯1↓⍵.Match})	replace-string-interpolation
