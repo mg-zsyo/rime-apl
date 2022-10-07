@@ -1,0 +1,752 @@
+# Rime dictionary
+# encoding: utf-8
+# Table author:
+#  - zmg
+# References:
+#  - https://aplcart.info/
+#  - https://aplwiki.com/
+#  - https://help.dyalog.com/18.0/
+# 
+# ⎕IO≡0 by default if not suffixed with -io (⎕IO agnostic)
+# or -io-one (⎕IO≡1)
+# 
+
+---
+name: apl
+version: "0.2"
+sort: original
+...
+
+⌶	i-beam
+⌺	stencil
+⋄	diamond
+⋄	separator
+⋄	<>
+⍒	grade-down
+⍋	grade-up
+⌽	reverse
+⌽	rotate
+⌽	flip
+⍉	transpose
+⍉	reorder
+⍉	flip-over
+⊖	reverse-first
+⊖	rotate-first
+⊖	flip-first
+⍟	log
+⍱	nor
+⍲	nand
+¨	each
+¯	negative
+¯	high-minus
+¯	--
+<	less-than
+≤	less-or-equal
+≤	up-to
+=	equal
+≥	greater-or-equal
+≥	at-least
+>	greater-than
+≠	not-equal
+≠	neq
+≠	unique-mask
+≠	nub-sieve
+∨	or
+∨	gcd
+∨	greatest-common-divisor
+∨	vel
+∧	and
+∧	lcm
+∧	lowest-common-multiple
+∧	wedge
+!	factorial
+!	binomial
+!	out-of
+!	combinations-of
+×	times
+×	multiply
+×	signum
+×	xx
+⌹	inverse
+⌹	solve
+⌹	matrix-divide
+⌹	domino
+÷	divided-by
+÷	reciprocal
+÷	quotient
+÷	dd
+⍷	find
+⍷	found-in
+⍷	subarray
+⍨	commute
+⍨	constant
+⍨	selfie
+⍸	where
+⍸	bin-k
+⍸	binary-search
+⍥	over
+⍣	power-operator
+⍣	repeat
+⍞	quote-quad
+⍞	char-input
+⍞	char-output
+⍬	zilde
+⍬	empty-numeric-vector
+⊣	tack-left
+⊣	left
+⊣	sinister
+⊣	same
+?	roll
+?	deal
+⍵	ww
+⍵	omega
+⍵	right-argument
+⍵⍵	right-operand
+∊	epsilon
+∊	enlist
+∊	member
+∊	ee
+⍴	rho
+⍴	rr
+⍴	shape
+⍴	reshape
+~	tilde
+~	not
+~	without
+~	except
+↑	arrow-up
+↑	mix
+↑	take
+↓	arrow-down
+↓	split
+↓	drop
+⍳	iota
+⍳	ii
+⍳	index-of
+⍳	find-index-of
+○	circle
+○	pi-times
+*	exponential
+*	power
+←	arrow-left
+←	assign
+←	<-
+←	is<-
+←	tis
+→	arrow-right
+→	goto
+⊢	tack-right
+⊢	right
+⊢	dexter
+⊢	same
+⍤	rank
+⍤	atop
+⌸	quad-equal
+⌸	key
+⌷	squad
+⌷	index
+[]	index
+≡	depth
+≡	match
+≡	equivalent
+≢	tally
+≢	not-match
+≢	nonequivalent
+≢	nqv
+⍺	aa
+⍺	alpha
+⍺	left-argument
+⍺⍺	left-operand
+⌈	ceiling
+⌈	maximum
+⌊	floor
+⌊	minimum
+∇	recursion
+∇	self-fn
+∇∇	recursion-operator
+∇∇	self-op
+∘	jot
+∘	beside
+∘	bind
+∘	compose
+⎕	quad
+⎕	input
+⎕	output
+⍎	execute
+⍎	evaluate
+⍕	format
+⊆	shoe-underbar
+⊆	nest
+⊆	partition
+⍪	comma-bar
+⍪	table
+⍪	catenate-first
+⍠	variant
+⍠	quad-colon
+⊂	shoe-left
+⊂	enclose
+⊂	partitioned-enclose
+⊃	shoe-right
+⊃	first
+⊃	pick
+∩	shoe-up
+∩	intersection
+∪	shoe-down
+∪	union
+∪	unique
+⊥	tack-up
+⊥	decode
+⊤	tack-down
+⊤	encode
+|	stile
+|	magnitude
+|	absolute-value
+|	residue
+⍝	lamp
+⍝	comment
+⍝	nb
+⍀	backslash-bar
+⍀	scan-first
+⍀	expand-first
+\	backslash
+\	scan
+\	expand
+⌿	slash-bar
+⌿	replicate-first
+⌿	reduce-first
+/	slash
+/	replicate
+/	reduce
++	add
++	plus
++	conjugate
+-	subtract
+-	minus
+-	negate
+,	comma
+,	ravel
+,	join
+,	catenate
+.	product
+.	inner-product
+∘.	outer-product
+@	at-operator
+ä	a-umlaut
+Ä	a-umlaut-upper
+ö	o-umlaut
+Ö	o-umlaut-upper
+ü	u-umlaut
+Ü	u-umlaut-upper
+ß	eszett
+∆	delta-symbol
+⍙	delta-underscore
+∇	del-symbol
+⎕A	alphabet
+⎕Á	national-alphabet
+⎕D	digits
+⎕AV	characters
+¯1∘⎕C	to-lower
+1∘⎕C	to-upper
+⎕C	case-fold
+≡⍥⎕C	case-insensitive-match
+⎕IO	quad-index-origin
+⎕IO	iorigin
+⎕PP	print-precision
+⎕RL	random-link
+⎕DMX	diagnostic
+⎕R	replace
+⎕S	search
+⎕TS	timestamp
+⎕DT	date-time
+⎕CR	canonical-representation
+⎕CR	definition-as-chars
+⎕DR	data-representation
+⎕DR	type
+⎕NS	create-namespace
+⎕NS	copy-namespace
+⎕CY	copy-workspace
+{(⍎⍵⎕NS⍬).⎕CY ⍵}	copy-workspace-to-namespace
+⎕UCS	unicode-convert
+('UTF-8'⎕UCS⊢)	utf-eight-encoding-of
+⎕PROFILE 'start'	profiling-start
+⎕PROFILE 'stop'	profiling-suspend
+⎕PROFILE 'clear'	profiling-clear
+]profile	profiling-show
+⎕DL	delay
+⎕DL	sleep
+⎕TID	thread-id
+⎕TNAME	thread-name
+⎕TNUMS	thread-numbers
+⎕TCNUMS	thread-child-numbers
+⎕TKILL	thread-kill
+⎕TSYNC	thread-wait-for-result
+⎕TSYNC	wait-for-thread
+⎕NEW	new
+⎕EX	expunge
+⎕CLEAR	clear
+)ERASE	erase
+)si	list-si
+)sic	clear-si
+)ed ∇	edit-fn-or-op
+)ed →	edit-char-vector
+)ed ∊	edit-char-vector-of-vectors
+)ed -	edit-char-matrix
+)ed ○	edit-class-script
+)ed ⍟	edit-namespace-script
+]help	help
+]runtime	time-the-expr
+]disp	display-mid
+]display	display-max
+]create	link-namespace-with-directory
+]map	display-namespace-tree
+]peek	peek-namespace-and-execute
+0::	catch-error
+3::	catch-index-error
+4::	catch-rank-error
+5::	catch-length-error
+6::	catch-value-error
+10::	catch-limit-error
+11::	catch-domain-error
+⎕SIGNAL	throw
+⎕SIGNAL	event-signal
+⎕EN	event-number
+⎕TRAP	event-trap
+  (f g h) ⍵ ⍝↔ (  f ⍵) g (  h ⍵)	fork
+⍺ (f g h) ⍵ ⍝↔ (⍺ f ⍵) g (⍺ h ⍵)	fork
+  (A g h) ⍵ ⍝↔       A g (  h ⍵)	fork
+⍺ (A g h) ⍵ ⍝↔       A g (⍺ h ⍵)	fork
+  (g h) ⍵ ⍝↔ g (  h ⍵)	atop
+⍺ (g h) ⍵ ⍝↔ g (⍺ h ⍵)	atop
+  f∘g⍨⍵ ⍝↔ ⍵ f g ⍵	hook
+⍺ f∘g ⍵ ⍝↔ ⍺ f g ⍵	hook
+⊢←	update
+⊢←	assign-nonlocal
+,←	push
+↓⍨←	pop
+⍺⌹⍵ ⍝↔ (⌹(+⍉⍵)+.×⍵)+.×(+⍉⍵)+.×⍺	matrix-divide-equivalence
++⍨	double
+-⍨	subtracted-from
+÷⍨	long-division
+×⍨	square
+∨/	any
+∧/	all
+×/	prd
+×\	prds
+{×\[⍺]⍵}	cumprod
++/	sum
++\	sums
+{+\[⍺]⍵}	cumsum
+((+\⊢↑⍨¯1+⊣),+/)	msum
+⌈/	max-of
+⌊/	min-of
+⊢/	last
+⊢/	last-column
+⊢⌿	last-first
+⊢⌿	last-row
+⊣/	first-column
+⊣⌿	first-row
+⊢⍤/	filter
+⊢⍤⌿	filter-first
+(*∘0.5)	square-root
+(*∘0.5)	sqrt
+(*∘÷∘3)	cube-root
+(*∘÷∘3)	cbrt
+*∘÷⍨	root-xth
+=⍨	fill-ones
+(⍴∘1)	ones
+≠⍨	fill-zeros
+{0}¨	fill-zeros-idiom
+(⍴∘0)	zeros
+(⎕IO-⍨⍳)	til
+2∘|	is-odd
+(⌽≡⊢)	is-palindrome
+(⊂∘⍋⌷⊢)	sort-up
+(⊂∘⍒⌷⊢)	sort-down
+(⊂∘⍋⌷⊢)	asc
+(⊂∘⍒⌷⊢)	desc
+{(⊂⍋⍵)⌷⍵}	sort-up-idiom
+{(⊂⍒⍵)⌷⍵}	sort-down-idiom
+{(⊂⍋⍵)⌷⍵}	asc-idiom
+{(⊂⍒⍵)⌷⍵}	desc-idiom
+⍋	iasc
+⍒	idesc
+(⊃⌽,)	bottom-right
+⊂∘⊃	corner
++.×	matrix-multiply
++.×	mmu
++.×	dot-product
+(+⌿×)	wsum
+(1⌽(⊣×1⌽⊢)-⊢×1⌽⊣)	cross-product
+{1⌽↑⍺⍵-.×1⌽¨⍵⍺}	cross-product-short
+(+.×(⊢×0○÷)×⍥(0.5*⍨+.×⍨))	cross-product-magnitude
+(+.×(⊢×0○÷)×⍥(0.5*⍨+.×⍨))	magnitude-of-cross-prod
+∘.,	cartesian-product
+(10∘⊥⍣¯1)	digits-of
+{≢⍵}⌸	frequency
+{⍺,≢⍵}⌸	frequency-dict
+(180÷○∘÷)	rad->deg
+(180÷⍨○)	deg->rad
+(30÷○∘÷)	rad-per-sec->rpm
+(30÷⍨○)	rpm->rad-per-sec
+(∪⊢∨¯1↓⍳)	divisors
+{(⎕D,⎕A)[1+16⊥⍣¯1⊢⍵]}	hex-disp
+⊂[⎕IO]	matrix->vector-of-column-vectors
+⊂[⎕IO]	enclose-column
+(↓⍉)	matrix->vector-of-column-vectors
+(↑¨⊂[⎕IO])	invert-table
+⌷⍨∘⊂⍨	from
+⌷⍨∘⊂⍨	select
+⌷⍨∘⊂⍨	swizzle
+!⍨	choose
+(!×∘!⊣)	combinations-ordered-of
+(!×∘!⊣)	out-of-ordered
+(!×∘!⊣)	order-of-out-of
+{{,[⍳2]↑(⊂⊂⎕IO,1+⍵)⌷¨⍒¨↓∘.=⍨⍳1+1↓⍴⍵}⍣⍵⍉⍪⍬}	prm
+(⌊÷)	intdiv
+{⊃⍺⍺⍨/(⌽⍵),⊂⍺}	foldl-seeded
+{⊃⍺⍺⍨/⌽⍵}	foldl
+{⊢⍺⍺{c⊢←c ⍺⍺ ⍵}¨⍵⊣c←⍺}	scanl-seeded
+{c←⊃⍵ ⋄ (1↑⍵),⍺⍺{c⊢←c ⍺⍺ ⍵}¨1↓⍵}	scanl
+{(⊣/⍵),2⍺⍺⍨/⍵}	prior
+{2⍺⍺⍨/⍵}	prior-apl
+{2⍺⍺⍨/⍺,⍵}	prior-seeded
+{2-⍨/0,⍵}	deltas
+{0,2-⍨/⍵}	deltas-zero
+{2÷⍨/1,⍵}	ratios
+{1,2÷⍨/⍵}	ratios-one
+(1,2≢/,)	differ
+{1,2≢/⍵}	differ-row
+{1⍪2≢⌿⍵}	differ-column
+{1⍪2≢⌿⍵}	differ-first
+(1,2≡/,)	equals
+{1,2≡/⍵}	equals-row
+{1⍪2≡⌿⍵}	equals-column
+{1⍪2≡⌿⍵}	equals-first
+{(⍺⍺⍀(⍺-1)↑⍵),⍺ ⍺⍺⌿⍵}	moving
+(+⌿÷≢)	avg
+(+⌿÷≢)	average
+(+⌿÷≢)	arithmetic-mean
+((+⌿÷≢)⍤×⍨-×⍨∘(+⌿÷≢))	var
+((+⌿÷≢)⍤×-×⍥(+⌿÷≢))	cov
+((≢÷¯1+≢)×(+⌿÷≢)⍤×⍨-×⍨∘(+⌿÷≢))	svar
+((⌊÷)×⊢)⍨	xbar
+{2÷⍨1⊥⍵⌷⍨⊂(⍋⍵)⌷⍨⊂1-⍨⌈2÷⍨0 1+≢⍵}	median
+{2÷⍨1⊥⍵⌷⍨⊂(⍋⍵)⌷⍨⊂(⎕IO-1)+⌈2÷⍨0 1+≢⍵}	median-io
+{a/⍨b=⌈/b⊣a b←↓⍉{⍺(≢⍵)}⌸⍵}	mode
+(+⍀÷1+⍳⍤≢)	avgs
+(+⍀÷(1-⎕IO)+⍳⍤≢)	avgs-io
+({(+⍀÷1+⍳⍤≢)⍵↑⍨⍺-1},(+⌿÷⊣))	mavg
+({(+⍀÷(1-⎕IO)+⍳⍤≢)⍵↑⍨⍺-1},(+⌿÷⊣))	mavg-io
+(+⌿÷⊣)	mavg-simple
+(+.×÷1⊥⊣)	wavg
+(⊃((+⌿÷≢),×⌿*∘÷≢)⍣≡)	arithmetic–geometric-mean
+(⊃((+⌿÷≢),×⌿*∘÷≢)⍣≡)	agm
+(×⌿*∘÷≢)	geometric-mean
+(≢÷1⊥÷)	harmonic-mean
+(×÷+)	parallel
+(÷1⊥÷)	parallel-sum
+(÷1⊥÷)	total-parallel-resistance
+(*∘0.5(1⊥×⍨)÷≢)	root-mean-square
+(*∘0.5(1⊥×⍨)÷≢)	rms
+(*∘0.5(1⊥×⍨)÷≢)	quadratic-mean
+(÷∘(2*0.5))	peak->rms
+(×∘(2*0.5))	rms->peak
+((+⌿÷≢)2*⍨-)	mean-squared-error
+((+⌿÷≢)2*⍨-)	mse
+(3÷⍨++0.5*⍨×)	heronian-mean
+(≢÷⍨1⊥⊢|⍤-+⌿÷≢)	mad-around-mean
+(≢÷⍨1⊥⊢|⍤-+⌿÷≢)	mean-absolute-deviation-around-mean
+(≢⍤⊢÷⍨1⊥|⍤-)	mad-around-x-train
+{(1⊥|⍺-⍵)÷≢⍵}	mad-around-x
+{(1⊥|⍺-⍵)÷≢⍵}	mean-absolute-deviation-around-x
+{(1⊥|⍺-⍵)÷≢⍵}	mae
+{(1⊥|⍺-⍵)÷≢⍵}	mean-absolute-error
+0∘○	sin<->cos
+1∘○	sin
+2∘○	cos
+3∘○	tan
+4∘○	sinh->cosh
+5∘○	sinh
+6∘○	cosh
+7∘○	tanh
+8∘○	jcos<->jsin
+9∘○	real-part
+10∘○	magnitude
+11∘○	imaginary-part
+12∘○	phase
+12∘○	cis
+¯1∘○	asin
+¯2∘○	acos
+¯3∘○	atan
+¯4∘○	cosh->sinh
+¯5∘○	asinh
+¯6∘○	acosh
+¯7∘○	atanh
+¯8∘○	jcos<->-jsin
+¯9∘○	identity
+¯10∘○	conjugate
+¯11∘○	j-times
+¯12∘○	exp-j-times
+¯12∘○	cos-jsin
+(9 11○⊂)	complex->real-and-imaginary-parts
+(10 12○⊂)	complex->magnitude-and-phase-parts
+{⍺+¯11○⍵}	real-and-imaginary-parts->complex
+{⍺+¯11○⍵}	j-join-real-and-imaginary-parts
+(⊣×¯12○⊢)	phasor
+{⍺×¯12○⍵}	magnitude-and-phase-parts->complex
+(÷3∘○)	cot
+(÷2∘○)	sec
+(÷1∘○)	csc
+{-/×⌿0 1⌽⍵}	det-two
+{-/+/×/[1](2 3⍴0 1 2 0 2 1)⌽↑⍵ ⍵}	det-three
+{-/+/×/[⎕IO+1](2 3⍴0 1 2 0 2 1)⌽↑⍵ ⍵}	det-three-io
+(⊃∘⊃({-⍺+.×⍨(+\-+/)@(∘.=⍨⍳∘≢)⍵×∘.≤⍨⍳≢⍵}/≢⍴⊂))	det-n
+(|⍤-÷⊢)	relative-error
+(0.5*⍨+.×⍨)	vector-magnitude
+(0.5*⍨+.×⍨)	magnitude-of-vector
+(0.5*⍨1⊥×⍨)	euclidean-norm-train
+{0.5*⍨1⊥×⍨⍵}	euclidean-norm
+{0.5*⍨1⊥×⍨⍵}	srss
+(0.5*⍨1⊥×⍨⍤-)	euclidean-distance-train
+{0.5*⍨1⊥×⍨⍺-⍵}	euclidean-distance
+(÷⍤⊣*⍨1⊥*⍨∘|)	p-norm
+(1⊥∘|-)	manhattan-distance
+(⌈/∘|-)	chebyshev-distance
+(⊢⊤∘⍳×/)	odometer
+(⎕IO+⊢⊤⎕IO-⍨∘⍳×/)	odometer-io
+⍴∘⊂	copy
+(,⍨⍴1↑⍨1∘+)	identity-matrix-of-rank
+(⊣↑,⍨⍤⊢⍴1↑⍨1+⊢)	eye
+(0∘⌈)	map-negative-to-zero
+(0∘⌈)	rectifier
+(0∘⌈)	relu
+(0∘<)	relu-derivative
+(0∘<)	heaviside-zero-at-zero
+(0∘≤)	unit-step-discrete
+(0∘≤)	heaviside-one-at-zero
+(0∘⌈)	rectified-linear-unit
+(0∘⌈)	ramp
+(0∘⌈)	positive-part-of
+(0⌈-)	negative-part-of
+{2÷⍨1+×⍵}	heaviside-half-maximum
+(¯1*~)	map-bool-to-sign
+⍸@⊢	map-true-to-iota
+(1+⍸)@⊢	map-true-to-enum
+((1-⎕IO)+⍸)@⊢	map-true-to-enum-io
+(∘.!⍨0,⍳)	binomial-coef-until
+(⍉(∘.!⍨0,⍳))	pascals-triangle
+⍉∘⌽	rotate-ninety-degrees-ccw
+2∘(+⌿⊥⍣¯1)	hamming-weight
+2∘(+⌿⊥⍣¯1)	population-count
+{r⊣⍺⍺{r,∘⊂←⍺⍺ ⍵}⍣⍵⍵⊃r←⊂⍵}	iterate-monadic
+{r⊣⍺ ⍺⍺{r,∘⊂←⍺ ⍺⍺ ⍵}⍣⍵⍵⊃r←⊂⍵}	iterate-dyadic
+(⊢⍴(⍳×/))	iota-by-shape
+{(⊃⍋)¨↓[⍺]⍵}	argmin-axis-x
+{(⊃⍒)¨↓[⍺]⍵}	argmax-axis-x
+(⊃⍒)	argmax
+{(⊃∘⍒⌷⊢)¨↓[⍺]⍵}	max-of-axis-x
+{↑[⍺](⍳∘≢=⊃∘⍒)¨↓[⍺]⍵}	argmax-one-hot-axis-x
+(⍳∘≢=⊃∘⍒)	argmax-one-hot
+{↑[⍺](*÷1⊥*)¨↓[⍺]⍵}	softmax-axis-x
+(*÷1⊥*)	softmax
+{(⍟1⊥*)¨↓[⍺]⍵}	log-sum-exp-axis-x
+(⍟1⊥*)	log-sum-exp
+(⍟1⊥*)	lse
+(⍟+⍥*)	smooth-max-lse-simple
+{⍺÷⍨⍟+⌿*⍺×⍵}	smooth-max-lse-of-y
+{⍵(×÷⍥(+⌿)⊢)*⍺×⍵}	smooth-max-of-y
++∘÷/	continued-fraction
+(0=⎕NC)	is-undefined-variable
+(⍳⍨=⍳∘≢)	unique-mask
+{(-⍺)↑¨(+\⍺)↑¨⊂⍵}	partition-by-length
+(⍸⍤⊣⊆⊢)	partition-by-length-non-empty-io-one
+(⊢⊆⍨1+⍸⍤⊣)	partition-by-length-non-empty
+⊂⍨∘(⍸⍣¯1)⍨	cut
+⊂⍨∘(⍸⍣¯1)⍨	partition-by-index
+(≠⊆⊢)	split-if-equal-to-x
+(~⍤∊⍨⊆⊢)	split-if-x-includes
+(≢⍤⊣↓¨,⊂⍨⊣⍷,)	split-by-x
+{⊃⍪/1↓,(⊂⍺),⍪⍵}	join-with-x
+(1↓∘,,⍤0)	join-with-scalar-x
+(,⍤0)	laminate
+,[¯0.5]	laminate-first
+,[⎕IO-0.5]	laminate-first-io
+{,[⍳⍺]⍵}	merge-first-x-axes
+{,⍤⍺⊢⍵}	merge-last-x-axes
+(,⍤0)	merge-to-matrix
+(,,⍤0)	merge-to-vector
+(,,⍤1 0)	insert-before-each
+(,,⍤0 1⍨)	insert-after-each
+(,¨)	zip
+⍉∘↑	unzip
+{↓⍉↑⍵}	transposed-vector-of-vectors
+↓⍉↑	transposed-vector-of-vectors-idiom
+{⍵⌿⍨(≢⍵)⍴⌽1↑⍨⍺}	keep-every-xth-first
+{⍵/⍨(⊢/⍴⍵)⍴⌽1↑⍨⍺}	keep-every-xth
+{⍵⌿⍨(≢⍵)⍴~⌽1↑⍨⍺}	remove-every-xth-first
+{⍵/⍨(⊢/⍴⍵)⍴~⌽1↑⍨⍺}	remove-every-xth
+{⍺⍺(↑⍪⍺⍪↓)⍵}	insert-at
+{⍵(↑⍪⍺⍪↓)⍨⍺⍺-⎕IO}	insert-at-io
+(⊂⍤¯1)	enclose-major-cells
+(,⊂⍤¯1)	array->vector-of-major-cells
+(⊃≠⊢⍤/>-<)	compare-ordered
+(⊃≠⊢⍤/-)	first-difference
+(>-<)	compare
+(⊃≠⊢⍤/<)	less-than-ordered
+(~(⊃≠⊢⍤/>))	less-or-equal-ordered
+(~(⊃≠⊢⍤/<))	greater-or-equal-ordered
+(⊃≠⊢⍤/>)	greater-than-ordered
+{>/⍒⍺⍵}	structural-less-than
+{</⍋⍺⍵}	structural-less-or-equal
+{</⍒⍺⍵}	structural-greater-or-equal
+{>/⍋⍺⍵}	structural-greater-than
+{⊃(⍋-⍒)⍺⍵}	structural-compare
+{(⍺<⌈/⍵)∧⍺>⌊/⍵}	between
+(⎕IO=⍸)⍨	within-range-in-ex
+≠/	parity-function
+≠/	has-odd-number-of-ones
+(⌊.5∘+)	round
+⌊0.5+	round-idiom
+(××∘⌊|)	trunc
+(××∘⌊|)	truncate
+¯1∘↓	drop-last
+{⍵[;1]⊃⍨(↑⍵[;0])⍳⊂⍺}	get-value-from
+{(⍵[;1],⊂⍬)⊃⍨(↑⍵[;0])⍳⊂⍺}	get-value-empty-if-none
+{k(,⍤0)⍺⍺@((↑k)⍳⊂⍺)⊢⍵[;1]⊣k←⍵[;0]}	set-value-to
+{⍵[;0](,⍤0)⍺⍺¨⍵[;1]}	each-value
+{⍵[;⎕IO+1]⊃⍨(↑⍵[;⎕IO])⍳⊂⍺}	get-value-from-io
+{(⍵[;⎕IO+1],⊂⍬)⊃⍨(↑⍵[;⎕IO])⍳⊂⍺}	get-value-empty-if-none-io
+{k(,⍤0)⍺⍺@((↑k)⍳⊂⍺)⊢⍵[;⎕IO+1]⊣k←⍵[;⎕IO]}	set-value-to-io
+{⍵[;⎕IO](,⍤0)⍺⍺¨⍵[;⎕IO+1]}	each-value-io
+{⎕TSYNC ⍺ ⍺⍺&¨⍵}	peach-dyadic
+{⎕TSYNC ⍺⍺&¨⍵}	peach-monadic
+{⍵⍵ ⍵:∇ ⍺⍺ ⍵ ⋄ ⍵}	while
+{⍺⍺{⍵⍵ ⍵:⍵ ⋄ ∇ ⍺⍺ ⍵}⍵⍵ ⍺⍺ ⍵}	until
+{⍺⍺⍣⍺⊢⍵}	repeat-explicit
+{⍺⍺{⍎'⍺⍺ ⍵ ⋄ ⍵' ⋄ ⍺⍺}⍣⍺⊢⍵}	repeat-side-effect
+{{}⍬⊣⍺⍺{⍎'⍺⍺ ⍵ ⋄ ⍵' ⋄ ⍺⍺}⍣⍺⊢⍵}	repeat-side-effect-no-result
+{0=≢⍴⍵:⍺⍺ ⍵ ⋄ ⍺⍺∇∇¨⍵}	apply-scalar-fn-monadic
+{0=≡⍵:⍺⍺ ⍵ ⋄ ⍺⍺∇∇¨⍵}	apply-simple-scalar-fn-monadic
+{0=≡⍵:⍺ ⍺⍺ ⍵ ⋄ ⍺ ⍺⍺∇∇{⍺∘⍺⍺¨⍵}⍵}	apply-simple-scalar-fn-right
+{0=≡⍺:⍺ ⍺⍺ ⍵ ⋄ ⍺ ⍺⍺∇∇{⍺⍺∘⍵¨⍺}⍵}	apply-simple-scalar-fn-left
+⊢	apply-right-arg-no-stranding
+{⍺⍺ ⍺ ⍵}	apply-monadic-as-dyadic
+{⊃⍺⍺/⍵}	apply-dyadic-as-monadic
+{(⍺⍺⊣⊢)⍣⍵⍵⊢⍵}	apply-monadic-if
+{⍺(⍺⍺⊣⊢)⍣⍵⍵⊢⍵}	apply-dyadic-if
+{⍺:⍺⍺ ⍵ ⋄ ⍵⍵ ⍵}	apply-if-then-else
+{⍺:⍺⍺ ⍵ ⋄ ⍵⍵ ⍵}	ifte
+{⊃⍺⍺/⍺,⊂⍵}	apply-repeat-x
+{(⍺⍺ ⍺)⍵⍵ ⍵}	reverse-compose
+{(⍺⍺ ⍺)⍵⍵ ⍵}	before
+{(⍺⍺ ⍵)⍵⍵ ⍵}	before-monadic
+{⍺ ⍺⍺ ⍵⍵ ⍵}	withe
+{⍺ ⍺⍺ ⍵⍵ ⍵}	after
+∘	after
+{⍵ ⍺⍺ ⍵⍵ ⍵}	after-monadic
+{⍺∘⍺⍺¨⍵}	each-right
+{⍺⍺∘⍵¨⍺}	each-left
+{⍺⍺⍤¯1⊢⍵}	each-major-cell-monadic
+{⍺ ⍺⍺⍤¯1⊢⍵}	each-major-cell-dyadic
+⍤¯1⊢	each-major-cell
+{⍺⍺ ⍵:⍵⍵ ⍵ ⋄ 0}	short-circuit-and
+{⍺⍺ ⍵:1 ⋄ ⍵⍵ ⍵}	short-circuit-or
+(-∘≢⍤⊣↑⍪)	shift-after-left
+(-∘≢⍤⊢↑⍪⍨)	shift-after
+(≢⍤⊢↑⍪)	shift-before
+?⍨	random-permutation-int
+(?∘≢⊃⊢)	random-pick
+(⊂⍤?⍨∘≢⌷⊢)	random-shuffle
+(⊂⍤?⍨∘≢⌷⊢)	random-permutation-of
+{⍵⌷[⍺]⍨⊂?⍨≢⍵}	random-shuffle-along-axis
+(?⍴)	random-roll-x-times
+{?⍵⍴0}	random-between-zero-one
+(1=≢∘⍴)	is-vector
+(⍬≡⍴)	is-scalar
+(0=≡)	is-simple-scalar
+(⊂≡⊆)	is-simple
+{÷1+*-⍵}	standard-logistic
+{÷1+*-⍵}	logistic
+{⍟⍵÷1-⍵}	logit
+{⍵÷1-⍵}	odds
+(⌊/⍬)	number-max-value
+∧.=	rows-equal-to
+(⊢÷⍨⊢+/⍤×1∘⌽)	y->d-opposite
+(⊢÷⍨⊢+/⍤×1∘⌽)	wye->delta-opposite
+(+/÷⍨1∘⌽×¯1∘⌽)	d->y-opposite
+(+/÷⍨1∘⌽×¯1∘⌽)	delta->wye-opposite
+(⊃0∘⍴)	fill-element
+(1=≢∘∪∘,)	identical-simple-elements
+(1=≢∘∪)	identical-major-cells
+(1=≢∘∪⍤1)	identical-each-row
+(↑'×'⍴¨⍨⌊)	histogram
+0.5∘(⊣*⍨+.××.-0,⊢)	herons-formula
+0.5∘(⊣*⍨+.××.-0,⊢)	area-of-triangle<-sides
+(0 2∊⍨10|⎕DR)	is-char
+{⍵⍴⍨⍺⊣@(0∘=)⍨⌊(≢,⍵)÷×/⍺~0}	reshape-fit-zero
+{⍵⍴⍨⍺×@(<∘0)⍨⌈(≢,⍵)÷×/⍺~0}	reshape-fit-negative
+{↑,,⌿↑⍉↓¨×∘⍵¨⍺}	kronecker-product
+(,∘⌽∘⍉⍣4)	wrap-scalar-x-around-matrix-y
+(,∘⌽∘⍉⍣4∘⍪)	wrap-scalar-x-around-y
+(⍉≡+)	is-hermitian
+{⍵⌽⌽⍺↑1}	one-hot-encode-in-x-bits
+(⍸∘⌽)	one-hot-decode
+(⎕IO-⍨⍸∘⌽)	one-hot-decode-io
+{⍪⌽(1+2⊥⍵)⌽1↑⍨2*≢⍵}	qubit-basis-state
+(⍪1 0)	ket-zero
+(⍪0 1)	ket-one
+(2 2⍴0 1 1 0)	pauli-x-gate
+(2 2⍴0 0j¯1 0j1 0)	pauli-y-gate
+(2 2⍴1 0 0 ¯1)	pauli-z-gate
+(2 2⍴1 0 0,¯12∘○)	phase-shift-gate
+(¯1+⊢*⍨1+÷)	effective-interest-rate-nominal-x-period-y
+{c←⊃⍵ ⋄ (1↑⍵),⍺{c⊢←(⍵×⍺)+c×1-⍺}¨1↓⍵}	ema
+{(⊂⍵⍳⍨∪⍵)⌷⍺⍺¨⍵{⊂⍵}⌸⍺}	fby
+(+⌿⊥⍣¯1)⍣≡	digital-root-base-x
+(⊥⍣¯1)	base-x
+(×⍤⊢×|⍥|)⍨	remainder-truncated
+,⍥⊂	pair
+{⍺⍵}	pair-idiom
+,⍥⊆	link
+{2!1+⍵}	triangular-number
+(×∘⍴⍴⊢)	repeat-vector
+(,∘⍴⍴⊢)	genarray
+{2-⍨/⍵⌊⍺,⍵}	tax-brackets-allot
+{2-⍨/⍵⌊⍺,⍵}	bands-over-each-x
+{⍺∧∘~⍵↑⍨-≢⍺}	without-bit
+{(⌈/⌊⍵⌈⌊/)⍺}	clamp-y-by-x-array
+{⍺⍺⌈⍵⍵⌊⍵}	clamp-op
+(|⍨∘⍴⌷⊢)	index-wrap
+(⊢⌷⍨⎕IO+|⍨∘⍴)	index-wrap-io
+{+/(!∘⍵×(×/⍺*,)¨∘⌽⍨)⍳⍵+1}	binomial-theorem-sum
+{(!∘⍵×(×/⍺*,)¨∘⌽⍨)⍳⍵+1}	binomial-theorem
+{+/(!∘⍵×(×/⍺*,)¨∘⌽⍨)⍳⍵+1⊣⎕IO←0}	binomial-theorem-sum-io
+{(!∘⍵×(×/⍺*,)¨∘⌽⍨)⍳⍵+1⊣⎕IO←0}	binomial-theorem-io
+{↑=∘⍵¨⍵⌿⍨≠⍵}	self-classify-matrix
+{⍸⍣¯1⊢⍵}⌸	self-classify
+{(↓⍺)⍳↓⍵}	find-matrix-rows-of-y-in-x
+(+⌿∘↑-⍤+∘⍳⍨⍥≢↑¨×∘⊂)	polynomial-prod-desc-coef
+(+⌿∘↑×∘⊂↑⍨¨⎕IO-+∘⍳⍨⍥≢)	polynomial-prod-desc-coef-io
+{⍵{⊂⍵}⌸⍥,⍨+/↑⍳⍴⍵}	oblique-enclose
+{⍵{⊂⍵}⌸⍥,⍨+/↑⍳⍴⍵}	anti-diagonals
+{⍵⍉⍨{0}¨⍴⍵}	diagonal-main
+{⍵⍉⍨⎕IO⍴⍨⍴⍴⍵}	diagonal-main-io
+(⌽⍉⍨{0}¨∘⍴)	anti-diagonal-main
+{(⌽⍵)⍉⍨⎕IO⍴⍨⍴⍴⍵}	anti-diagonal-main-io
+{(2 2 1○⍺)×1,⍨2 1○⍵}⍥(180÷⍨○)	latitude-longitude-in-deg->n-vector
+(¯3○+.×(⊣÷⍨⊢×0○÷)×⍥(0.5*⍨+.×⍨))	great-circle-distance-atan-n-vector
+(¯2○+.×)	great-circle-distance-acos-n-vector
+{¯2○1-2×⍺(⊣+(×/2○⍺)×⊢)⍥(2÷⍨1-2○∘|-/)⍵}	great-circle-distance-rad-lat-lon
+{¯2○1-2×⍺(⊣+(×/2○⍺)×⊢)⍥(2÷⍨1-2○∘|-/)⍵}	haversine-formula-vec-of-lat-lon
+{⍺⍺+⍵⍵×⍵-⍺⍺}	lerp
+(⊣+2÷⍨-⍨)	midpoint
+(⊢∨∨.∧⍨)⍣≡	transitive-closure
+{1@⍵⊢0⍴⍨2⍴⍺}	adjacency-matrix-size-x<-arcs-list-y
+⍸	arcs<-adjacency-matrix
+(⍉≡⊢)	is-symmetric-mat
+(-≡⍉)	is-skew-symmetric-mat
+{⍵+.×⍺↑⍨⍤1 0-⍺+∘⍳⍥≢⍵}	convolution-sum
+(2⊥⍣¯1⊢6 15 10 11)	amongus
+(∨/(</1 0 0 1⌽,⍤0∘(2⌽⊢)⍥(2∘(↑(⊣,+)↓))))	not-overlap-x-y-w-h-rect
+('\${.+?}'⎕R{⍕⍎2↓¯1↓⍵.Match})	replace-interpolation
+('%.*?%'⎕R{{0=⍴⍵:'%' ⋄ ⍕⍎⍵}1↓¯1↓⍵.Match})	replace-interpolation-percent
